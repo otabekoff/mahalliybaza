@@ -55,7 +55,7 @@ export default function deleteIt() {
             resolve(
               success.call(
                 this,
-                `"${ collectionToDelete }" nomli to'plam o'chirildi.`,
+                `"${ collectionToDelete }" nomli collection o'chirildi.`,
                 { collection: collectionToDelete }
               )
             )
@@ -63,7 +63,7 @@ export default function deleteIt() {
             reject(
               error.call(
                 this,
-                `"${ collectionToDelete }" nomli to'plamni o'chirib bo'lmadi.`
+                `"${ collectionToDelete }" nomli collectionni o'chirib bo'lmadi.`
               )
             )
           })
@@ -94,12 +94,12 @@ export default function deleteIt() {
             reject(
               error.call(
                 this,
-                `${ JSON.stringify(docSelectionCriteria) } mezonlari bilan "${ collectionName }" nomli to'plamda hujjatlar topilmadi. Hech qanday hujjat o'chirilmadi.`
+                `${ JSON.stringify(docSelectionCriteria) } mezonlari bilan "${ collectionName }" nomli collectionda documentlar topilmadi. Hech qanday document o'chirilmadi.`
               )
             )
           }
           if (keysForDeletion.length > 1) {
-            logger.warn.call(this, `${ JSON.stringify(docSelectionCriteria) } bilan (${ keysForDeletion.length }) ta  hujjatlar topildi.`)
+            logger.warn.call(this, `${ JSON.stringify(docSelectionCriteria) } bilan (${ keysForDeletion.length }) ta  documentlar topildi.`)
           }
         }).then(() => {
           keysForDeletion.forEach((key, index) => {
@@ -108,7 +108,7 @@ export default function deleteIt() {
                 resolve(
                   success.call(
                     this,
-                    `${ keysForDeletion.length } hujjat${ keysForDeletion.length > 1 ? 'lar' : '' } ${ JSON.stringify(docSelectionCriteria) } bilan o'chirildi.`,
+                    `${ keysForDeletion.length } document${ keysForDeletion.length > 1 ? 'lar' : '' } ${ JSON.stringify(docSelectionCriteria) } bilan o'chirildi.`,
                     { keys: keysForDeletion }
                   )
                 )
@@ -117,7 +117,7 @@ export default function deleteIt() {
               reject(
                 error.call(
                   this,
-                  `${ keysForDeletion.length } ta hujjatni ${ collectionName } nomli to'plamdan o'chirib bo'lmadi.`
+                  `${ keysForDeletion.length } ta documentni ${ collectionName } nomli collectiondan o'chirib bo'lmadi.`
                 )
               )
             })
@@ -133,7 +133,7 @@ export default function deleteIt() {
               resolve(
                 success.call(
                   this,
-                  `${ JSON.stringify(docSelectionCriteria) } kalitli hujjatlar o'chirildi.`,
+                  `${ JSON.stringify(docSelectionCriteria) } kalitli documentlar o'chirildi.`,
                   { key: docSelectionCriteria }
                 )
               )
@@ -141,7 +141,7 @@ export default function deleteIt() {
               reject(
                 error.call(
                   this,
-                  `"${ collectionName }" to'plamida ${ JSON.stringify(docSelectionCriteria) } kaliti bilan hujjat topilmadi. Hech qanday hujjat o'chirilmadi.`
+                  `"${ collectionName }" collectionida ${ JSON.stringify(docSelectionCriteria) } kaliti bilan document topilmadi. Hech qanday document o'chirilmadi.`
                 )
               )
             });
@@ -150,7 +150,7 @@ export default function deleteIt() {
             reject(
               error.call(
                 this,
-                `"${ collectionName }" to'plamida ${ JSON.stringify(docSelectionCriteria) } kaliti bilan hujjat topilmadi. Hech qanday hujjat o'chirilmadi.`
+                `"${ collectionName }" collectionida ${ JSON.stringify(docSelectionCriteria) } kaliti bilan document topilmadi. Hech qanday document o'chirilmadi.`
               )
             )
           }

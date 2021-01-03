@@ -27,12 +27,12 @@ export default function update(docUpdates) {
           reject(
             error.call(
               this,
-              `${ JSON.stringify(docSelectionCriteria) } mezonlari bilan  ${ collectionName } to'plamida hujjatlar topilmadi.`
+              `${ JSON.stringify(docSelectionCriteria) } mezonlari bilan  ${ collectionName } collectionida documentlar topilmadi.`
             )
           )
         }
         if (docsToUpdate.length > 1) {
-          logger.warn.call(this, `Yangilash uchun ${ JSON.stringify(docSelectionCriteria) } bilan (${ docsToUpdate.length }) ta hujjatlar topildi.`)
+          logger.warn.call(this, `Yangilash uchun ${ JSON.stringify(docSelectionCriteria) } bilan (${ docsToUpdate.length }) ta documentlar topildi.`)
         }
       }).then(() => {
         docsToUpdate.forEach((docToUpdate, index) => {
@@ -42,7 +42,7 @@ export default function update(docUpdates) {
               resolve(
                 success.call(
                   this,
-                  `${ JSON.stringify(docSelectionCriteria) } dagi "${ collectionName }" to'plamida ${ docsToUpdate.length } hujjat${ docsToUpdate.length > 1 ? 'lar' : '' } yangilandi.`,
+                  `${ JSON.stringify(docSelectionCriteria) } dagi "${ collectionName }" collectionida ${ docsToUpdate.length } document${ docsToUpdate.length > 1 ? 'lar' : '' } yangilandi.`,
                   docUpdates
                 )
               )
@@ -52,7 +52,7 @@ export default function update(docUpdates) {
             reject(
               error.call(
                 this,
-                `${ collectionName } to'plamidagi ${ docsToUpdate.length } ta hujjat yangilanmadi.`
+                `${ collectionName } collectionidagi ${ docsToUpdate.length } ta document yangilanmadi.`
               )
             )
           })
@@ -69,7 +69,7 @@ export default function update(docUpdates) {
         resolve(
           success.call(
             this,
-            `"${ collectionName }" to'plamidagi hujjat ${ JSON.stringify(docSelectionCriteria) } kaliti bilan yangilandi.`,
+            `"${ collectionName }" collectionidagi document ${ JSON.stringify(docSelectionCriteria) } kaliti bilan yangilandi.`,
             newDocument
           )
         )
@@ -77,7 +77,7 @@ export default function update(docUpdates) {
         reject(
           error.call(
             this,
-            `"${ collectionName }" to'plamida ${ JSON.stringify(docSelectionCriteria) } kalitli hujjat topilmadi.`
+            `"${ collectionName }" collectionida ${ JSON.stringify(docSelectionCriteria) } kalitli document topilmadi.`
           )
         )
       })

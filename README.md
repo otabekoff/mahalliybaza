@@ -2,16 +2,45 @@
 
 Firebasega uslubidagi, offalyn, mahalliy ma'lumotlar bazasi.
 
-MahalliyBaza sizga Firebase uslubidagi sodda, kuchli, foydalanuvchi brauzerida saqlanadigan (IndexedDB ma'lumotlar bazasida) oflayn ma'lumotlar bazasini taqdim etadi.
+MahalliyBaza sizga Firebase uslubidagi sodda, kuchli, foydalanuvchi brauzerida saqlanadigan,IndexedDB ma'lumotlar bazasida ishlashni osonlashtiradigan offlayn ma'lumotlar bazasini taqdim etadi.
 
-Siz xohlagancha ma'lumotlar bazalarini yaratishingiz mumkin.
+Siz xohlagancha ma'lumot bazalarini yaratishingiz mumkin.
 
-Ma'lumotlar bazalari To'plamlar va Hujjatlarga birlashtirilgan (xuddi Firebase Cloud Firestore kabi).
+Ma'lumot bazalari Collectionlar(to'plam) va Documentlar(xujjatlar)ga birlashtirilgan (xuddi Firebase Cloud Firestore kabi).
 
-- **Ma'lumotlar bazalarida to'plamlar** mavjud (misol: `foydalanuvchilar`)
-- **To'plamlarda hujjatlar** mavjud (misol: `{ id: 1, ism: 'Otabek', age: 19 }`
+- **Ma'lumotlar bazalarida collectionlar** mavjud (misol: `foydalanuvchilar`)
+- **Collectionlarda documentlar** mavjud (misol: `{ id: 1, ism: 'Otabek', yosh: 19 }`
 
 MahalliyBaza [LocalForage](https://github.com/localForage/localForage) yordamida tuzilgan.
+
+
+## Boshlashdan avval bilib qo'yishingiz yaxshi bo'lgan atamalar.
+
+> Atamalar... Quyida ishlatilish mumkin bo'lgan ma'nolarda keltirildi.
+- **Funksiya** -
+- **Order** -
+- **OrderBy** -
+- **Ascending** -
+- **Descending** -
+- **Key(s)** -
+- **Limit** -
+- **Field** - maydon. O'zgaruvchi kaliti va qiymati.
+- **Document** - hujjat yoki ma'lumot.
+- **Collection** - documentlar to'plami.
+- **Databaza yoki database** - ma'lumotlar bazasi. Collectionlar saqlanadigan joy.
+- **Add** - qo'shish.
+**Get** - olish.
+- **Update** - yangilash.
+- **Set** - o'rnatish. Bu yerda qayta yozish orqali yangilash ma'nosida.
+- **Delete** - o'chirish.
+- **Overwrite** - ustiga yozish / qayta yozish.
+- **Promise(s)** -
+- **Async/await** -
+- **Console** - 
+- **Log** -
+- **Error** -
+- **Then** -
+- **Playground** - 
 
 ## Mundarija <!-- omit in toc -->
 
@@ -23,36 +52,36 @@ MahalliyBaza [LocalForage](https://github.com/localForage/localForage) yordamida
 - [Video Darslik](#video-darslik)
 - [Qisqa Kirish](#qisqa-kirish)
 - [Ma'lumot Qo'shish](#malumot-qoshish)
-  - [To'plamga hujjat qo'shish](#toplamga-hujjat-qoshish)
-  - [Hujjatni yangilash](#hujjatni-yangilash)
-  - [Hujjatni yangilash (ustiga yozish)](#hujjatni-yangilash-ustiga-yozish)
-  - [To'plamni yangilash (ustiga yozish)](#toplamni-yangilash-ustiga-yozish)
+  - [Collectionga document qo'shish](#toplamga-document-qoshish)
+  - [Documentni yangilash](#documentni-yangilash)
+  - [Documentni yangilash (ustiga yozish)](#documentni-yangilash-ustiga-yozish)
+  - [Collectionni yangilash (ustiga yozish)](#toplamni-yangilash-ustiga-yozish)
 - [Ma'lumotni olish](#malumotni-olish)
-  - [To'plamni olish](#toplamni-olish)
-  - [To'plamni tartiblash](#toplamni-tartiblash)
-  - [To'plamni cheklash](#toplamni-checklash)
-  - [Hujjatni olish](#hujjatni-olish)
+  - [Collectionni olish](#toplamni-olish)
+  - [Collectionni tartiblash](#toplamni-tartiblash)
+  - [Collectionni cheklash](#toplamni-checklash)
+  - [Documentni olish](#documentni-olish)
 - [Ma'lumotni o'chirish](#malumotni-ochirish)
-  - [Hujjatni o'chirish](#hujjatni-ochirish)
-  - [To'plamni o'chirish](#toplamni-ochirish)
+  - [Documentni o'chirish](#documentni-ochirish)
+  - [Collectionni o'chirish](#toplamni-ochirish)
   - [Ma'lumotlar bazasini o'chirish](#malumotlar-bazasini-ochirish)
 - [Kalitlardan yuqori darajada foydalanish](#kalitlardan-yuqori-darajada-foydalanish)
-  - [Hujjat qo'shish va o'z kalitingizni kiritish](#hujjat-qoshish-va-oz-kalitingizni-kiritish)
-  - [Kalitlarni o'z ichiga olgan to'plamni yangilash (ustiga yozish)](#kalitlarni-oz-ichiga-olgan-toplamni-yangilash-ustiga-yozish)
-  - [Hujjatni kalit bilan olish, yangilash, yangilash (qayta yozish) yoki o'chirish (hujjat mezonlari o'rniga)](#hujjatni-kalit-bilan-olish-yangilash-yangilash-qayta-yozish-yoki-ochirish-hujjat-mezonlari-orniga))
-  - [To'plamni olish va kalitlarni ma'lumotlar bilan birga qaytarish.](#toplamni-olish-va-kalitlarni-malumotlar-bilan-birga-qaytarish)
+  - [Document qo'shish va o'z kalitingizni kiritish](#document-qoshish-va-oz-kalitingizni-kiritish)
+  - [Kalitlarni o'z ichiga olgan collectionni yangilash (ustiga yozish)](#kalitlarni-oz-ichiga-olgan-toplamni-yangilash-ustiga-yozish)
+  - [Documentni kalit bilan olish, yangilash, yangilash (qayta yozish) yoki o'chirish (document mezonlari o'rniga)](#documentni-kalit-bilan-olish-yangilash-yangilash-qayta-yozish-yoki-ochirish-document-mezonlari-orniga))
+  - [Collectionni olish va kalitlarni ma'lumotlar bilan birga qaytarish.](#toplamni-olish-va-kalitlarni-malumotlar-bilan-birga-qaytarish)
 - [Promiselar bilan ishlash](#promiselar-bilan-ishlash)
-  - [Hujjatni qo'shib, keyin biror narsa qilish](#hujjatni-qoshib-keyin-biror-narsa-qilish)
-  - [Hujjatni yangilab, keyin biron bir ishni bajarish](#hujjatni-yangilab-keyin-biron-bir-ishni-bajarish)
-  - [Hujjatni yangilab (ustiga yozib), keyin biror narsa qilish](#hujjatni-yangilab-ustiga-yozib-keyin-biror-narsa-qilish)
-  - [Hujjatni o'chirib tashlab, keyin biror narsa qilish](#hujjatni-ochirib-tashlab-keyin-biror-narsa-qilish)
-  - [To'plamni o'chirib tashlab, keyin biror narsa qilish](#toplamni-ochirib-tashlab-keyin-biror-narsa-qilish)
-  - [Ma'lumotlar bazasini o'chirib tashlab, keyin biror narsa qilish](#malumotlar-bazasini-ochirib-tashlab-keyin-biror-narsa-qilish)
+  - [Documentni qo'shib, keyin biron ish bajarish](#documentni-qoshib-keyin-biror-narsa-qilish)
+  - [Documentni yangilab, keyin biron bir ishni bajarish](#documentni-yangilab-keyin-biron-bir-ishni-bajarish)
+  - [Documentni yangilab (ustiga yozib), keyin biron ish bajarish](#documentni-yangilab-ustiga-yozib-keyin-biror-narsa-qilish)
+  - [Documentni o'chirib tashlab, keyin biron ish bajarish](#documentni-ochirib-tashlab-keyin-biror-narsa-qilish)
+  - [Collectionni o'chirib tashlab, keyin biron ish bajarish](#toplamni-ochirib-tashlab-keyin-biror-narsa-qilish)
+  - [Ma'lumotlar bazasini o'chirib tashlab, keyin biron ish bajarish](#malumotlar-bazasini-ochirib-tashlab-keyin-biror-narsa-qilish)
 - [Async / Await](#async--await)
-  - [Hujjat qo'shish (Async Await bilan)](#hujjat-qoshish-async-await-bilan)
-  - [Hujjatlarni yangilash (Async Await bilan)](#hujjatlarni-yangilash-async-await-bilan)
-  - [Hujjatlarni yangilash (ustiga yozish, Async Await bilan)](#hujjatlarni-yangilash-ustiga-yozish-async-await-bilan))
-  - [To'plamni olish va xatolarni ushlash (Async Await bilan)](#toplamni-olish-va-xatolarni-ushlash-async-await-bilan))
+  - [Document qo'shish (Async Await bilan)](#document-qoshish-async-await-bilan)
+  - [Documentlarni yangilash (Async Await bilan)](#documentlarni-yangilash-async-await-bilan)
+  - [Documentlarni yangilash (ustiga yozish, Async Await bilan)](#documentlarni-yangilash-ustiga-yozish-async-await-bilan))
+  - [Collectionni olish va xatolarni ushlash (Async Await bilan)](#toplamni-olish-va-xatolarni-ushlash-async-await-bilan))
 - [Sozlash](#sozlash)
   - [Consoledagi Loglarni o'chirish](#consoledagi-loglarni-ochirish)
 - [Playground](#playground)
@@ -63,22 +92,42 @@ MahalliyBaza [LocalForage](https://github.com/localForage/localForage) yordamida
 ### O'rnatish va ishga tushirish
 
 #### Script tegi yordamida
+
+Ishlab chiqish (development) varianti. Ushbu variant siz proyekt ustida ishlayotgan paytingizda tekshirish uchun ancha qulayliklar yaratib beradi. Misol ucun: yangi qo'shilagan, o'zgartirilgan, o'chirilgan va hkz ma'lumotlar to'grisida sizga browseringiz dev-tools(F12 yoki CTRL+SHIFT+I) oynasining console bo'limida rang bilan ajratilgan habarlar yozish imkonini beradi.
+
 ```html
 <script src="https://unpkg.com/mahalliybaza/dist/mahalliybaza.dev.js"></script>
 
 <script>
   let db = new MahalliyBaza('db')
 </script>
+
+# Yoki
+
+<script src="./mahalliybaza.dev.js"></script>
+
+<script>
+  let db = new MahalliyBaza('db')
+</script>
 ```
 
-Or, use the minified, production version:
+Yoki, hajmi kichiklashtirilgan, ishlab chiqarish (production) variantidan foydlaning. Bu variantni siz proyektni tamomlaganingizdan keyin foydalanuvchilarga taqdim etganingizda ishlatishingiz mumkin. Bunda, qo'shilgan, yangilangan, o'chirilgan va hkz ma'lumotlar haqida browser dev-tools console bo'limida habarlar ko'rsatilmaydi. Va ishlab chiqish variantiga qaraganda fayl hajmi kamroq bo'ladi.
 ```html
 <script src="https://unpkg.com/mahalliybaza/dist/mahalliybaza.min.js"></script>
 
 <script>
   let db = new MahalliyBaza('db')
 </script>
+
+# Yoki
+
+<script src="./mahalliybaza.min.js"></script>
+
+<script>
+  let db = new MahalliyBaza('db')
+</script>
 ```
+
 
 
 #### NPM bilan
@@ -126,13 +175,13 @@ export default {
 <script>
 export default {
   head: {
-    title: 'Nuxt Blog - Home'
+    title: 'Nuxt - bosh sahifa'
   },
   mounted() {
-    this.$db.collection('users').add({
+    this.$db.collection('foydalanuvchilar').add({
       id: 1,
-      name: 'Bill',
-      age: 47
+      ism: 'Otabek',
+      yosh: 19
     })
   }
 }
@@ -141,7 +190,7 @@ export default {
 
 ## Video Darslik
 
-<a href="https://www.youtube.com/watch?v=KJnupY2HPCg" target="_blank">Watch my Video Introduction to MahalliyBaza</a>, including how to get started:
+<a href="https://www.youtube.com/watch?v=KJnupY2HPCg" target="_blank">Mening MahalliyBazani ishlatish haqidagi videoimni ko'ring</a>, 0 dan boshlab to'lliq tushuntirilgan:
 
 <a href="https://www.youtube.com/watch?v=KJnupY2HPCg" target="_blank">
   <img src="images/indexeddb-finally-an-easy-way-with-localbase-link.png">
@@ -149,326 +198,337 @@ export default {
 
 ## Qisqa Kirish
 
-Get started by adding a document to a collection. Just specify the collection name with the `collection` method (the collection will be created automatically) then specify the document you want to add with the `add` method: 
+To'plamga(endilikda collection) hujjat/ma'lumot(endilikda document) qo'shish bilan boshlang. `Collection` metodida to'plam nomini kiriting (to'plam avtomatik ravishda yaratiladi), keyin `add` usuli bilan qo'shmoqchi bo'lgan documentni (ma'lumotni) kiriting: 
 ```javascript
-db.collection('users').add({
+db.collection('foydalanuvchilar').add({
   id: 1,
-  name: 'Bill',
-  age: 47
+  ism: 'Otabek',
+  yosh: 19
 })
 ```
-Simples!
+Juda ham oddiy!
 
-Once you've added some data to a collection, you can get the whole collection with the `get` method:
+Collectionga ba'zi ma'lumotlarni qo'shgandan so'ng, siz `get` metodi bilan butun collectionni olishingiz mumkin:
 ```javascript
-db.collection('users').get().then(users => {
-  console.log(users)
+db.collection('foydalanuvchilar').get().then(foydalanuvchilar => {
+  console.log(foydalanuvchilar)
 })
 
 //  [
-//    { id: 1, name: 'Bill', age: 47 },
-//    { id: 2, name: 'Paul', age: 34 }
+//    { id: 1, ism: 'Otabek', yosh: 19 },
+//    { id: 2, ism: 'Abdulaziz', yosh: 34 }
 //  ]
 ```
 
 ## Ma'lumot Qo'shish
 
-### To'plamga hujjat qo'shish
+### Collectionga document qo'shish
 
-Add a new document to a collection.
+Misol uchun:
 
 ```javascript
-db.collection('users').add({
+db.collection('foydalanuvchilar').add({
   id: 1,
-  name: 'Bill',
-  age: 47
+  ism: 'Otabek',
+  yosh: 19
 })
 ```
 
-### Hujjatni yangilash
+### Documentni yangilash
 
-Update an existing document. Just pass an object with a field and value (usually id) to match the document. Then pass in only the fields you want to update with the `update` method.
+Mavjud documentni(qisman yok butunlay) yangilash mumkin. Buning uchun `update` metodidan foydalaning. Documentga mos kelish uchun faqat maydon va qiymat (odatda id) bo'lgan obyektni kiriting.
+
+> Diqqat! agar faqat aynan qaysidir maydonlarning o'zi yangilashi kerak bo'lsa o'sha maydonlarni o'zinigina update metodi ichiga kiriting.
 
 ```javascript
-db.collection('users').doc({ id: 1 }).update({
-  name: 'William'
+db.collection('foydalanuvchilar').doc({ id: 1 }).update({
+  ism: 'Abdulaziz'
 })
 
 //  [
-//    { id: 1, name: 'William', age: 47 },
-//    { id: 2, name: 'Paul', age: 34 }
+//    { id: 1, ism: 'Abdulaziz', yosh: 19 },
+//    { id: 2, ism: 'Abdulaziz', yosh: 34 }
 //  ]
 ```
 
-**Note:** if more than one document is matched by your criteria e.g `.doc({ gender: 'male' })` then **all** matched documents will be updated. 
+**Diqqat:** Agar siz bergan mezon bo'yicha bittadan ko'p documentlar topilsa, misol: `.doc({ jins: 'erkak' })` bo'yicha, unday holatda **barcha** mos tushgan (topilgan) documentlar yangilanadi. 
 
-### Hujjatni yangilash (ustiga yozish)
+### Documentni yangilash (ustiga yozish)
 
-Overwrite an existing document. This will completely overwrite the selected document, so all required fields should be passed into the `set` method.
+Mavjud documentni qayta yozish orqali yangilash.
+Bunda yangilanayotgan document metodida, yangilanishi kerak bo'lgan document maydonlari bo'lmagan taqdirda, yangi maydonlar kiritilib eski maydonlar o'chiriladi. Yani update metodiga o'xshamagan holda, documentni to'liq qayta yoziladi. Shuning uchun barcha kerakli maydonlar `set` metodi ichida berilishi kerak.
 
 ```javascript
-db.collection('users').doc({ id: 2 }).set({
+db.collection('foydalanuvchilar').doc({ id: 2 }).set({
   id: 4, 
-  name: 'Pauline',
-  age: 27
+  ism: 'Jakhongir',
+  yosh: 27
 })
 
 //  [
-//    { id: 1, name: 'William', age: 47 },
-//    { id: 4, name: 'Pauline', age: 27 }
+//    { id: 1, ism: 'Otabek', yosh: 19 },
+//    { id: 4, ism: 'Jakhongir', yosh: 27 }
 //  ]
 ```
 
-**Note:** if more than one document is matched by your criteria e.g `.doc({ gender: 'male' })` then **all** matched documents will be overwritten. 
+**Diqqat:** Agar siz bergan mezon bo'yicha bittadan ko'p documentlar topilsa, misol: `.doc({ jins: 'erkak' })` bo'yicha, unday holatda **barcha** mos tushgan (topilgan) documentlar yangilanadi. 
 
-### To'plamni yangilash (ustiga yozish)
+### Collectionni yangilash (ustiga yozish)
 
-Overwrite an entire collection with an array of documents. This will completely overwrite the selected collection.
+<!-- Overwrite an entire collection with an array of documents. This will completely overwrite the selected collection. -->
+Documentlarning to'plami bo'lgan butun `collection udpate` bo'ladi yani qayta yozish orqali yangilanadi.
+
 
 ```javascript
-db.collection('users')
+db.collection('foydalanuvchilar')
   .set([
     {
       id: 1,
-      name: 'Bill',
-      age: 48
+      ism: 'Abdulakhad',
+      yosh: 20
     },
     {
       id: 2, 
-      name: 'Paul',
-      age: 28
+      ism: 'Abdurahmon',
+      yosh: 14
     }
   ])
 
 //  [
-//    { id: 1, name: 'Bill', age: 48 },
-//    { id: 2, name: 'Paul', age: 28 }
+//    { id: 1, ism: 'Abdulakhad', yosh: 20 },
+//    { id: 2, ism: 'Abdurahmon', yosh: 14 }
 //  ]
 ```
 
 ## Ma'lumotni olish
 
-### To'plamni olish
+### Collectionni olish
 
-Get all items from a collection. The collection will be returned in an array.
+Collectiondan barcha narsalarni olish. Collection arrayda qaytariladi.
 
 ```javascript
-db.collection('users').get().then(users => {
-  console.log(users)
+db.collection('foydalanuvchilar').get().then(foydalanuvchilar => {
+  console.log(foydalanuvchilar)
 })
 
 //  [
-//    { id: 1, name: 'Bill', age: 47 },
-//    { id: 2, name: 'Paul', age: 34 }
+//    { id: 1, ism: 'Ahrorxo'ja', yosh: 17 },
+//    { id: 2, ism: 'Ulugbek', yosh: 18 }
 //  ]
 ```
 
-### To'plamni tartiblash
+### Collectionni tartiblash
 
-Get a collection and order it by a particular field (ascending).
+Collectionni olish va uni ma'lum bir maydon bo'yicha tartiblash (ascending).
+
+> orderBy metodi ikkita argument qabul qiladi. Birinchisi, qarab tartiblanishi kerak bo'lgan maydon. Ikkinchisi, tartiblanish uslubi. Tartiblanish uslubi ikki hil: 1. asc (ascending yani yuqoriga) va desc (descending pastga) qarab tartiblash.
+
 
 ```javascript
-db.collection('users').orderBy('age').get().then(users => {
-  console.log('users: ', users)
+db.collection('foydalanuvchilar').orderBy('yosh').get().then(foydalanuvchilar => {
+  console.log('foydalanuvchilar: ', foydalanuvchilar)
 })
 
 //  [
-//    { id: 2, name: 'Paul', age: 34 },
-//    { id: 1, name: 'Bill', age: 47 }
+//    { id: 2, ism: 'Otabek', yosh: 19 },
+//    { id: 1, ism: 'Abdulaziz', yosh: 47 }
 //  ]
 ```
 
-Get a collection and order it by a particular field (descending).
+Collectionni olish va ma'lum bir maydon bo'yicha tartiblash (descending).
 
 ```javascript
-db.collection('users').orderBy('name', 'desc').get().then(users => {
-  console.log('users: ', users)
+db.collection('foydalanuvchilar').orderBy('ism', 'desc').get().then(foydalanuvchilar => {
+  console.log('foydalanuvchilar: ', foydalanuvchilar)
 })
 
 //  [
-//    { id: 2, name: 'Paul', age: 34 },
-//    { id: 1, name: 'Bill', age: 47 }
+//    { id: 2, ism: 'Ulugbek', yosh: 18 },
+//    { id: 1, ism: 'Ahrorxo'ja', yosh: 17 }
 //  ]
 ```
 
-### To'plamni checklash
+### Collectionni checklash
 
-Order a collection & limit it to a particular number of documents.
+Collection tartiblash va uni ma'lum miqdordagi documentlar bilan checklash.
 
 ```javascript
-db.collection('users').orderBy('name', 'desc').limit(1).get().then(users => {
-  console.log('users: ', users)
+db.collection('foydalanuvchilar').orderBy('ism', 'desc').limit(1).get().then(foydalanuvchilar => {
+  console.log('foydalanuvchilar: ', foydalanuvchilar)
 })
 
 //  [
-//    { id: 2, name: 'Paul', age: 34 }
+//    { id: 2, ism: 'Ulugbek', yosh: 18 }
 //  ]
 ```
 
 
-### Hujjatni olish
+### Documentni olish
 
-Get an individual document from a collection
+Collectiondan individual documentni olish
 
 ```javascript
-db.collection('users').doc({ id: 1 }).get().then(document => {
+db.collection('foydalanuvchilar').doc({ id: 1 }).get().then(document => {
   console.log(document)
 })
 
-// { id: 1, name: 'Bill', age: 47 }
+// { id: 1, ism: 'Abdurahmon', yosh: 14 }
 ```
 
 ## Ma'lumotni o'chirish
 
-### Hujjatni o'chirish
-Delete a document from a collection.
+### Documentni o'chirish
+Collectiondan documentni o'chirish.
 ```javascript
-db.collection('users').doc({ id: 1 }).delete()
+db.collection('foydalanuvchilar').doc({ id: 1 }).delete()
 
 //  [
-//    { id: 2, name: 'Paul', age: 34 }
+//    { id: 2, ism: 'Abdulaziz', yosh: 34 }
 //  ]
 ```
 
-**Note:** if more than one document is matched by your criteria e.g `.doc({ gender: 'male' })` then **all** matched documents will be deleted. 
+**Diqqat:** Agar siz bergan mezon bo'yicha bittadan ko'p documentlar topilsa, misol: `.doc({ jins: 'erkak' })` bo'yicha, unday holatda **barcha** mos tushgan (topilgan) documentlar o'chiriladi. 
 
-### To'plamni o'chirish
-Delete a collection and all documents contained in it.
+### Collectionni o'chirish
+Collectionni va undagi barcha documentlarni o'chirib tashlash.
 ```javascript
-db.collection('users').delete()
+db.collection('foydalanuvchilar').delete()
 ```
 
 ### Ma'lumotlar bazasini o'chirish
-Delete a database and all collections contained in it.
+Ma'lumotlar bazasi va undagi barcha documentlarni o'chirib tashlash.
 ```javascript
 db.delete()
 ```
 
 ## Kalitlardan yuqori darajada foydalanish
 
-Your documents are stored in an IndexedDB store with keys:
+Sizning documentlaringiz **IndexedDB storeda** `key` bilan saqlanadi:
 
 ![IndexedDB Store - Keys](images/indexed-db-keys.png)
 
-By default, MahalliyBaza generates random, ordered, unique IDs for these keys.
+Odatda, MahalliyBaza bu keylar uchun tasodifiy, tartiblangan, yagona IDlarni yaratadi.
 
-But you might want to take control of these keys. For example, you might want to:
-- Specify your own key when you add a document
-- Use the key for selecting a document (when getting, updating, setting or deleting a document) instead of using some document criteria
-- Return all of the keys as well as the document fields, when getting a collection, e.g.
+Ammo siz ushbu keylarning (kalitlarning) nomini boshqarishni(o'zgartirishni) xohlashingiz mumkin. Masalan siz:
+- Document qo'shganda o'z keyingizni ko'rsatishingiz.
+- Uni documentlarni tanlash (olayotganda, yangilayotganda, qayta yozayotganda yoki o'chirayotganda) ishlatishingiz
+- Va collectionni olayotganingizda barcha keylarni document maydonlari sifatida qaytarishingiz mumkin. Masalan quyidagidek.
 ```javascript
 [
   {
-    key: 'mykey-2',
+    key: 'kalit-2',
     data: {
-      { id: 2, name: 'Paul', age: 34 }
+      { id: 2, ism: 'Abdulaziz', yosh: 34 }
     }
   },
   {
-    key: 'mykey-1',
+    key: 'kalit-1',
     data: {
-      { id: 1, name: 'Bill', age: 47 }
+      { id: 1, ism: 'Adxamboy', yosh: 21 }
     }
   }
 ]
 ```
 
-You can do all this with MahalliyBaza:
+Siz bularning barchasini MahalliyBaza orqali qilishingiz mumkin:
 
-### Hujjat qo'shish va o'z kalitingizni kiritish
+### Document qo'shish va o'z kalitingizni kiritish
 
-After specifying your document data, pass in a key (to be used by the IndexedDB store) as a second parameter:
+<!-- After specifying your document data, pass in a key (to be used by the IndexedDB store) as a second parameter: -->
+Document ma'lumotlarini kiritgandan so'ng, ikkinchi parametr sifatida (IndexedDB store tomonidan foydalaniladigan) keyni kiriting kiriting:
+
 
 ```javascript
-db.collection('users').add({
+db.collection('foydalanuvchilar').add({
   id: 1,
-  name: 'Bill',
-  age: 47
-}, 'mykey-1')
+  ism: 'Otabek',
+  yosh: 19
+}, 'kalit-1')
 ```
 
-Or, you can just use the `set` method:
+Yoki, siz shunchaki `set` metodini ishlatishingiz mumkin:
 
 ```javascript
-db.collection('users').doc('mykey-1').set({
+db.collection('foydalanuvchilar').doc('kalit-1').set({
   id: 1, 
-  name: 'Bill',
-  age: 47
+  ism: 'Abdulakhad',
+  yosh: 20
 })
 ```
 
-Which would look like this in the IndexedDB:
+IndexedDB da quyidagicha ko'rinadi:
 
 ![IndexedDB Store - Own Keys](images/indexed-db-own-keys.png)
 
-### Kalitlarni o'z ichiga olgan to'plamni yangilash (ustiga yozish)
+### Kalitlarni o'z ichiga olgan collectionni yangilash (ustiga yozish)
 
-Overwrite an entire collection with an array of documents, and specify a key for each document. Make sure you pass in the `{ keys: true }` option. This will completely overwrite the selected collection.
+
+To'liq collectionni documentlar arrayi bilan (qayta yozish orqali) yangilang va har bir document uchun keyni kiriting. `{keys: true}" parametri kiritganingizga ishonch hosil qiling. Bu tanlangan collectionni to'liq qayta yozadi.
 
 ```javascript
-db.collection('users')
+db.collection('foydalanuvchilar')
   .set([
     {
       id: 1,
-      name: 'Bill',
-      age: 48,
-      _key: 'mykey-1'
+      ism: 'Otabek',
+      yosh: 19,
+      _key: 'kalit-1'
     },
     {
       id: 2, 
-      name: 'Paul',
-      age: 28,
-      _key: 'mykey-2'
+      ism: 'Ulugbek',
+      yosh: 18,
+      _key: 'kalit-2'
     }
   ], { keys: true })
 ```
 
-### Hujjatni kalit bilan olish, yangilash, yangilash (qayta yozish) yoki o'chirish (hujjat mezonlari o'rniga)
+### Documentni kalit bilan olish, yangilash, yangilash (qayta yozish) yoki o'chirish (document mezonlari o'rniga)
 
-When selecting a document with the `doc` method, instead of passing in an object with a field name and value, just pass in a string (or integer) with your key:
+Documentni `doc`" metodi bilan tanlayotganda, maydon nomi va qiymati ko'rsatilgan obyekt kiritish o'rniga, shunchaki key bilan string (yoki number) kiriting:
 ```javascript
-// get document by key
-db.collection('users').doc('mykey-1').get().then(document => {
+// kalit bilan docuementni olish
+db.collection('foydalanuvchilar').doc('kalit-1').get().then(document => {
   console.log(document)
 })
 
-// update document by key
-db.collection('users').doc('mykey-1').update({
-  name: 'William'
+// documentni key bilan yangilash
+db.collection('foydalanuvchilar').doc('kalit-1').update({
+  ism: 'Abdurahmon'
 })
 
-// set document by key
-db.collection('users').doc('mykey-2').set({
+// documentni key bilan qayta yozish
+db.collection('foydalanuvchilar').doc('kalit-2').set({
   id: 4, 
-  name: 'Pauline',
-  age: 27
+  ism: 'Adxamboy',
+  yosh: 21
 })
 
-// delete a document by key
-db.collection('users').doc('mykey-1').delete()
+// documentni key bilan o'chirish
+db.collection('foydalanuvchilar').doc('kalit-1').delete()
 ```
 
 
-### To'plamni olish va kalitlarni ma'lumotlar bilan birga qaytarish.
+### Collectionni olish va kalitlarni ma'lumotlar bilan birga qaytarish.
 
-When getting a collection, just pass `{ keys: true }` into the `get` method:
+Collectionni olayotganda, shunchaki `{ keys: true }` ni `get` metodi ichida yozib qo'ying:
 
 ```javascript
-db.collection('users').orderBy('name', 'desc').get({ keys: true }).then(users => {
-  console.log('users: ', users)
+db.collection('foydalanuvchilar').orderBy('ism', 'desc').get({ keys: true }).then(foydalanuvchilar => {
+  console.log('foydalanuvchilar: ', foydalanuvchilar)
 })
 
 //  [
+  //   {
+  //      key: 'kalit-2',
+  //      data: {
+  //        { id: 1, ism: 'Abdulaziz', yosh: 34 }
+  //      }
+  //    },
 //    {
-//      key: 'mykey-2',
+//      key: 'kalit-1',
 //      data: {
-//        { id: 2, name: 'Paul', age: 34 }
-//      }
-//    },
-//    {
-//      key: 'mykey-1',
-//      data: {
-//        { id: 1, name: 'Bill', age: 47 }
+//        { id: 2, ism: 'Otabek', yosh:  19}
 //      }
 //    }
 //  ]
@@ -476,210 +536,215 @@ db.collection('users').orderBy('name', 'desc').get({ keys: true }).then(users =>
 
 ## Promiselar bilan ishlash
 
-You can add promises to all operations and do something when it's successful, or when there's an error.
+Amallar muvaffaqiyatli bo'lganida yoki xato yuz berganda, barcha operatsiyalarga promise(va'dalar)ni qo'shishingiz va biror narsa bajarishingiz mumkin.
 
-### Hujjatni qo'shib, keyin biror narsa qilish
+Misol uchun databazaga yangi collection qo'shilganda, u qo'shilganligi haqida browser dev-tools console bo'limida habar chiqarishingiz mumkin.
+
+### Documentni qo'shib, keyin biron ish bajarish
 
 ```javascript
-db.collection('users')
+db.collection('foydalanuvchilar')
   .add({
     id: 1,
-    name: 'Bill',
-    age: 47
-  }, 'mykey-1')
+    ism: 'Otabek',
+    yosh: 47
+  }, 'kalit-1')
   .then(response => {
-    console.log('Add successful, now do something.')
+    console.log("Qo'shish muavvafaqiyatli amalga oshdi.")
   })
   .catch(error => {
-    console.log('There was an error, do something else.')
+    console.log("Xatolik yuz berdi, qaytadan harakat qilib ko'ring.")
   })
 
-// you can test the error by passing a 
-// string, number or boolean into the 
-// .add() method, instead of an object
+// Siz xatoni add() metodi ichida object o'rniga
+// string, number yoki boolean yozish bilan
+// tekshirib ko'rishingiz mumkin.
 ```
 
-### Hujjatni yangilab, keyin biron bir ishni bajarish
+### Documentni yangilab, keyin biron bir ishni bajarish
 
 ```javascript
-db.collection('users')
+db.collection('foydalanuvchilar')
   .doc({ id: 1 })
   .update({
-    name: 'William'
+    ism: 'Abdurahmon'
   })
   .then(response => {
-    console.log('Update successful, now do something.')
+    console.log('Yangilash muvaffaqiyatli amalga oshdi.')
   })
   .catch(error => {
-    console.log('There was an error, do something else.')
+    console.log("Xatolik yuz berdi, qaytadan harakat qilib ko'ring.")
   })
   
-// you can test the error by passing nothing
-// into the update() method
+// Siz xatolikni update() metodi ichiga hech narsa
+// yozmaslik orqali tekshirib ko'rishingiz mumkin.
 ```
 
-### Hujjatni yangilab (ustiga yozib), keyin biror narsa qilish
+### Documentni yangilab (ustiga yozib), keyin biron ish bajarish
 
 ```javascript
-db.collection('users')
+db.collection('foydalanuvchilar')
   .doc({ id: 1 })
   .set({
     id: 1, 
-    name: 'Pauline',
-    age: 27
+    ism: 'Ulugbek',
+    yosh: 27
   })
   .then(response => {
-    console.log('Set successful, now do something.')
+    console.log('Qayta yozish muvaffaqiyatli amalga oshdi.')
   })
   .catch(error => {
-    console.log('There was an error, do something else.')
+    console.log("Xatolik yuz berdi, qaytadan harakat qilib ko'ring.")
   })
 
-// you can test the error by passing nothing
-// into the set() method
+// Siz xatolikni set() metodi ichiga hech narsa
+// yozmaslik orqali tekshirib ko'rishingiz mumkin.
 ```
 
-### Hujjatni o'chirib tashlab, keyin biror narsa qilish
+### Documentni o'chirib tashlab, keyin biron ish bajarish
 
 ```javascript
-db.collection('users')
+db.collection('foydalanuvchilar')
   .doc({ id: 1 })
   .delete()
   .then(response => {
-    console.log('Delete successful, now do something.')
+    console.log("O'chirish muvaffaqiyatli amalga oshdi.")
   })
   .catch(error => {
-    console.log('There was an error, do something else.')
+    console.log("Xatolik yuz berdi, qaytadan harakat qilib ko'ring.")
   })
 
-  // you can test the error by passing nothing
-  // into the doc() method
+  // Siz xatolikni doc() metodi ichiga hech narsa
+  // yozmaslik orqali tekshirib ko'rishingiz mumkin
 ```
 
-### To'plamni o'chirib tashlab, keyin biror narsa qilish
+### Collectionni o'chirib tashlab, keyin biron ish bajarish
 
 ```javascript
-db.collection('users')
+db.collection('foydalanuvchilar')
   .delete()
   .then(response => {
-    console.log('Collection deleted, now do something.')
+    console.log("Collection muvaffaqiyatli o'chirildi.")
   })
   .catch(error => {
-    console.log('There was an error, do something else')
+    console.log("Xatolik yuz berdi, boshqatdan harakat qilib ko'ring.")
   })
   
-// you can test the error by passing nothing
-// into the collection() method
+// Siz xatolikni collection() metodi ichiga hech narsa
+// yozmaslik orqali tekshirib ko'rishingiz mumkin
 ```
 
-### Ma'lumotlar bazasini o'chirib tashlab, keyin biror narsa qilish
+### Ma'lumotlar bazasini o'chirib tashlab, keyin biron ish bajarish
 
 ```javascript
 db.delete()
   .then(response => {
-    console.log('Database deleted, now do something.')
+    console.log("Ma'lumotlar bazasi muvaffaqiyatli o'chirildi.")
   })
   .catch(error => {
-    console.log('There was an error, do something else.')
+    console.log("Xatolik yuz berdi, boshqatdan harakat qilib ko'ring.")
   })
   
-// note: sometimes when you delete a
-// database, the change won't show up
-// in Chrome Dev tools til you reload
-// the page
+// Eslatma: ba'zida ma'lumotlar bazasini o'chirib
+// tashlaganingizda, sahifani qayta yuklamaguningizcha
+// Chrome Dev-tools vositalarida o'zgarish bo'lmaydi
 ```
 
 ## Async / Await
 
-You can also use Async / Await with all operations
+Bundan tashqari, barcha operatsiyalar bilan Async / Await dan foydalanishingiz mumkin
 
-### Hujjat qo'shish (Async Await bilan)
+### Document qo'shish (Async Await bilan)
 
 ```javascript
-async function addUsers() {
-  await db.collection('users').add({
+async function qoshish() {
+  await db.collection('foydalanuvchilar').add({
     id: 1,
-    name: 'Bill',
-    age: 47
+    ism: 'Otabek',
+    yosh: 19
   })
-  console.log('first user added')
-  await db.collection('users').add({
+  console.log("Birinchi foydalanuvchi qo'shildi")
+  await db.collection('foydalanuvchilar').add({
     id: 2,
-    name: 'Paul',
-    age: 34
+    ism: 'Abdulaziz',
+    yosh: 19
   })
-  console.log('second user added')
+  console.log("Ikkinchi foydalanuvchi qo'shildi")
 }
-addUsers()
+qoshish()
 ```
 
-### Hujjatlarni yangilash (Async Await bilan)
+### Documentlarni yangilash (Async Await bilan)
 
 ```javascript
-async function updateUser() {
-  let result = await db.collection('users')
+async function yangilash() {
+  let natija = await db.collection('foydalanuvchilar')
     .doc({ id: 1 })
     .update({
-      name: 'William'
+      ism: 'Abdulakhad'
     })
-  console.log(result)
+  console.log(natija)
 }
-updateUser()
+yangilash()
 ```
 
-### Hujjatlarni yangilash (ustiga yozish, Async Await bilan)
+### Documentlarni yangilash (ustiga yozish, Async Await bilan)
 
 ```javascript
-async function setUser() {
-  let result = await db.collection('users')
+async function qaytaYangilash() {
+  let natija = await db.collection('foydalanuvchilar')
     .doc({ id: 2 })
     .set({
       id: 4, 
-      name: 'Pauline',
-      age: 27
+      ism: 'Abdurahmon',
+      yosh: 14
     })
-    console.log(result)
+    console.log(natija)
 }
-setUser()
+qaytaYangilash()
 ```
 
-### To'plamni olish va xatolarni ushlash (Async Await bilan)
+### Collectionni olish va xatolarni ushlash (Async Await bilan)
 
 ```javascript
-async function getUsers() {
+async function foydalanuvchilarniOlish() {
   try {
-    let users = await db.collection('users')
-      .orderBy('age')
+    let foydalanuvchilar = await db.collection('foydalanuvchilar')
+      .orderBy('yosh')
       .get()
-    console.log('users: ', users)
+    console.log('foydalanuvchilar: ', foydalanuvchilar)
   }
   catch(error) {
-    console.log('error: ', error)
+    console.log('xatolik: ', error)
   }
 }
-getUsers()
+foydalanuvchilarniOlish()
 
-// test the error by passing nothing into collection()
+// Siz xatolikni collection() metodi ichiga hech narsa
+// yozmaslik orqali tekshirib ko'rishingiz mumkin.
 ```
 
 ## Sozlash
 
 ### Consoledagi Loglarni o'chirish
 
-By default, when in development, MahalliyBaza will fire out gorgeously labelled debug logs like this:
+Odatda, MahalliyBaza ishlab chiqish (development) variantida quyidagi kabi ajoyib loglarni browserning dev-tools console bo'limida chiqarib boradi:
 
 ![Gorgeous, Labelled Logs](images/gorgeous-logs.png)
 
-You can disable these logs by setting `db.config.debug` to `false`.
+Siz bu loglarni `db.config.debug` boolean maydonigaa `false` qiymatini berish orqali o'zgartirishingiz mumkin.
 
-It's best to do this after you initialize the database, and before you do anything else:
+<!-- It's best to do this after you initialize the database, and before you do anything else: -->
+
+Ma'lumotlar bazasini ishga tushirgandan so'ng va boshqa biror narsa bajarishdan oldin quyidagi kodni kiritish kerak:
+
 ```javascript
 import MahalliyBaza from 'mahalliybaza'
 let db = new MahalliyBaza('db')
 
 db.config.debug = false
 
-// now do some stuff with the motherflipping db yo
+// Buyog'iga databaza bilan biror narsa qilish kerak
 ```
 
 
@@ -687,11 +752,13 @@ db.config.debug = false
 
 ## Playground
 
-[Playground](https://github.com/dannyconnell/mahalliybaza-playground) is an app for playing around with MahalliyBaza and all the available methods.
+[Playground](https://github.com/dannyconnell/mahalliybaza-playground) bu MahalliyBaza va yuqoridagi barcha mavjud metodlar bilan ishlab ko'rish uchun mo'ljallangan dastur.
 
-It contains a bunch of different code snippets (for adding, updating, setting and getting) data to/from a MahalliyBaza database.
+<!-- It contains a bunch of different code snippets (for adding, updating, setting and getting) data to/from a MahalliyBaza database. -->
 
-You can launch these code snippets (and edit them if you like) in the browser and observe the result in the IndexedDB database and in the console.
+Unda MahalliyBaza ma'lumotlar bazasiga yoki ma'lumotlar bazasidan turli xil kodlarni (qo'shish, yangilash, sozlash va olish uchun) ma'lumotlar to'plami mavjud.
+
+Siz ushbu kodlarini browserda ishga tushirishingiz va (agar xohlasangiz, ularni tahrirlashingiz mumkin) natijasini browser dev-tools oynasining applications bo'limining IndexedDB ma'lumotlar bazasi qismida va console bo'limida kuzatishingiz mumkin.
 
 ![IndexedDB Store - Own Keys](images/mahalliybaza-playground.png)
 

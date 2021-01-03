@@ -28,7 +28,7 @@ export default function get(options = {
       }
       collection.push(collectionItem)
     }).then(() => {
-      let logMessage = `"${ collectionName }" to'plami olindi`
+      let logMessage = `"${ collectionName }" collectioni olindi`
       // orderBy
       if (orderByProperty) {
         logMessage += `, "${ orderByProperty }" orqali tartiblandi`
@@ -74,10 +74,10 @@ export default function get(options = {
         }
       }).then(() => {
         if (!collection.length) {
-          logger.error.call(this, `${ JSON.stringify(docSelectionCriteria)} mezonlari bilan "${ collectionName }" to'plamidagi hujjatlar topilmadi.`)
+          logger.error.call(this, `${ JSON.stringify(docSelectionCriteria)} mezonlari bilan "${ collectionName }" collectionidagi documentlar topilmadi.`)
         } else {
           document = collection[0]
-          logger.log.call(this, `${ JSON.stringify(docSelectionCriteria) } bilan hujjat olindi:`, document)
+          logger.log.call(this, `${ JSON.stringify(docSelectionCriteria) } bilan document olindi:`, document)
           reset.call(this)
           return document
         }
@@ -89,14 +89,14 @@ export default function get(options = {
       return this.lf[collectionName].getItem(docSelectionCriteria).then((value) => {
         document = value
         if (document) {
-          logger.log.call(this, `${ JSON.stringify(docSelectionCriteria) } bilan hujjat olindi:`, document)
+          logger.log.call(this, `${ JSON.stringify(docSelectionCriteria) } bilan document olindi:`, document)
         } else {
-          logger.error.call(this, `${ JSON.stringify(docSelectionCriteria)} kaliti bilan "${ collectionName }" to'plamida hujjat topilmadi.`)
+          logger.error.call(this, `${ JSON.stringify(docSelectionCriteria)} kaliti bilan "${ collectionName }" collectionida document topilmadi.`)
         }
         reset.call(this)
         return document
       }).catch(err => {
-        logger.error.call(this, `${ JSON.stringify(docSelectionCriteria)} kaliti bilan "${ collectionName }" to'plamida hujjat topilmadi.`)
+        logger.error.call(this, `${ JSON.stringify(docSelectionCriteria)} kaliti bilan "${ collectionName }" collectionida document topilmadi.`)
         reset.call(this)
       });
     }

@@ -168,12 +168,12 @@ function add(data, keyProvided) {
       }
 
       return _this.lf[collectionName].setItem(key, data).then(function () {
-        resolve(_success["default"].call(_this, "Hujjat \"".concat(collectionName, "\" to'plamiga qo'shildi."), {
+        resolve(_success["default"].call(_this, "Document \"".concat(collectionName, "\" collectioniga qo'shildi."), {
           key: key,
           data: data
         }));
       })["catch"](function (err) {
-        reject(_error["default"].call(_this, "Hujjatni ".concat(collectionName, " to'plamiga qo'shib bo'lmadi.")));
+        reject(_error["default"].call(_this, "Documentni ".concat(collectionName, " collectioniga qo'shib bo'lmadi.")));
       });
     });
   } else {
@@ -251,11 +251,11 @@ function deleteIt() {
           }).then(function () {
             _this.deleteNextCollectionFromQueue();
 
-            resolve(_success["default"].call(_this, "\"".concat(collectionToDelete, "\" nomli to'plam o'chirildi."), {
+            resolve(_success["default"].call(_this, "\"".concat(collectionToDelete, "\" nomli collection o'chirildi."), {
               collection: collectionToDelete
             }));
           })["catch"](function (error) {
-            reject(error.call(_this, "\"".concat(collectionToDelete, "\" nomli to'plamni o'chirib bo'lmadi.")));
+            reject(error.call(_this, "\"".concat(collectionToDelete, "\" nomli collectionni o'chirib bo'lmadi.")));
           });
         } else {
           _this.deleteCollectionQueue.running = false;
@@ -279,22 +279,22 @@ function deleteIt() {
           }
         }).then(function () {
           if (!keysForDeletion.length) {
-            reject(_error["default"].call(_this, "".concat(JSON.stringify(docSelectionCriteria), " mezonlari bilan \"").concat(collectionName, "\" nomli to'plamda hujjatlar topilmadi. Hech qanday hujjat o'chirilmadi.")));
+            reject(_error["default"].call(_this, "".concat(JSON.stringify(docSelectionCriteria), " mezonlari bilan \"").concat(collectionName, "\" nomli collectionda documentlar topilmadi. Hech qanday document o'chirilmadi.")));
           }
 
           if (keysForDeletion.length > 1) {
-            _logger["default"].warn.call(_this, "".concat(JSON.stringify(docSelectionCriteria), " bilan (").concat(keysForDeletion.length, ") ta  hujjatlar topildi."));
+            _logger["default"].warn.call(_this, "".concat(JSON.stringify(docSelectionCriteria), " bilan (").concat(keysForDeletion.length, ") ta  documentlar topildi."));
           }
         }).then(function () {
           keysForDeletion.forEach(function (key, index) {
             _this.lf[collectionName].removeItem(key).then(function () {
               if (index === keysForDeletion.length - 1) {
-                resolve(_success["default"].call(_this, "".concat(keysForDeletion.length, " hujjat").concat(keysForDeletion.length > 1 ? 'lar' : '', " ").concat(JSON.stringify(docSelectionCriteria), " bilan o'chirildi."), {
+                resolve(_success["default"].call(_this, "".concat(keysForDeletion.length, " document").concat(keysForDeletion.length > 1 ? 'lar' : '', " ").concat(JSON.stringify(docSelectionCriteria), " bilan o'chirildi."), {
                   keys: keysForDeletion
                 }));
               }
             })["catch"](function (err) {
-              reject(_error["default"].call(_this, "".concat(keysForDeletion.length, " ta hujjatni ").concat(collectionName, " nomli to'plamdan o'chirib bo'lmadi.")));
+              reject(_error["default"].call(_this, "".concat(keysForDeletion.length, " ta documentni ").concat(collectionName, " nomli collectiondan o'chirib bo'lmadi.")));
             });
           });
         });
@@ -305,14 +305,14 @@ function deleteIt() {
         _this.lf[collectionName].getItem(docSelectionCriteria).then(function (value) {
           if (value) {
             _this.lf[collectionName].removeItem(docSelectionCriteria).then(function () {
-              resolve(_success["default"].call(_this, "".concat(JSON.stringify(docSelectionCriteria), " kalitli hujjatlar o'chirildi."), {
+              resolve(_success["default"].call(_this, "".concat(JSON.stringify(docSelectionCriteria), " kalitli documentlar o'chirildi."), {
                 key: docSelectionCriteria
               }));
             })["catch"](function (err) {
-              reject(_error["default"].call(this, "\"".concat(collectionName, "\" to'plamida ").concat(JSON.stringify(docSelectionCriteria), " kaliti bilan hujjat topilmadi. Hech qanday hujjat o'chirilmadi.")));
+              reject(_error["default"].call(this, "\"".concat(collectionName, "\" collectionida ").concat(JSON.stringify(docSelectionCriteria), " kaliti bilan document topilmadi. Hech qanday document o'chirilmadi.")));
             });
           } else {
-            reject(_error["default"].call(_this, "\"".concat(collectionName, "\" to'plamida ").concat(JSON.stringify(docSelectionCriteria), " kaliti bilan hujjat topilmadi. Hech qanday hujjat o'chirilmadi.")));
+            reject(_error["default"].call(_this, "\"".concat(collectionName, "\" collectionida ").concat(JSON.stringify(docSelectionCriteria), " kaliti bilan document topilmadi. Hech qanday document o'chirilmadi.")));
           }
         });
       };
@@ -392,7 +392,7 @@ function get() {
 
       collection.push(collectionItem);
     }).then(function () {
-      var logMessage = "\"".concat(collectionName, "\" to'plami olindi"); // orderBy
+      var logMessage = "\"".concat(collectionName, "\" collectioni olindi"); // orderBy
 
       if (orderByProperty) {
         logMessage += ", \"".concat(orderByProperty, "\" orqali tartiblandi");
@@ -443,11 +443,11 @@ function get() {
         }
       }).then(function () {
         if (!collection.length) {
-          _logger["default"].error.call(_this, "".concat(JSON.stringify(docSelectionCriteria), " mezonlari bilan \"").concat(collectionName, "\" to'plamidagi hujjatlar topilmadi."));
+          _logger["default"].error.call(_this, "".concat(JSON.stringify(docSelectionCriteria), " mezonlari bilan \"").concat(collectionName, "\" collectionidagi documentlar topilmadi."));
         } else {
           document = collection[0];
 
-          _logger["default"].log.call(_this, "".concat(JSON.stringify(docSelectionCriteria), " bilan hujjat olindi:"), document);
+          _logger["default"].log.call(_this, "".concat(JSON.stringify(docSelectionCriteria), " bilan document olindi:"), document);
 
           _reset["default"].call(_this);
 
@@ -462,16 +462,16 @@ function get() {
         document = value;
 
         if (document) {
-          _logger["default"].log.call(_this, "".concat(JSON.stringify(docSelectionCriteria), " bilan hujjat olindi:"), document);
+          _logger["default"].log.call(_this, "".concat(JSON.stringify(docSelectionCriteria), " bilan document olindi:"), document);
         } else {
-          _logger["default"].error.call(_this, "".concat(JSON.stringify(docSelectionCriteria), " kaliti bilan \"").concat(collectionName, "\" to'plamida hujjat topilmadi."));
+          _logger["default"].error.call(_this, "".concat(JSON.stringify(docSelectionCriteria), " kaliti bilan \"").concat(collectionName, "\" collectionida document topilmadi."));
         }
 
         _reset["default"].call(_this);
 
         return document;
       })["catch"](function (err) {
-        _logger["default"].error.call(_this, "".concat(JSON.stringify(docSelectionCriteria), " kaliti bilan \"").concat(collectionName, "\" to'plamida hujjat topilmadi."));
+        _logger["default"].error.call(_this, "".concat(JSON.stringify(docSelectionCriteria), " kaliti bilan \"").concat(collectionName, "\" collectionida document topilmadi."));
 
         _reset["default"].call(_this);
       });
@@ -557,7 +557,7 @@ function set(newDocument) {
           newDocument.forEach(function (doc) {
             _this.add(doc);
           });
-          resolve(_success["default"].call(_this, "\"".concat(collectionName, "\" to'plami ").concat(newDocument.length, " ta hujjat bilan yangilandi."), newDocument));
+          resolve(_success["default"].call(_this, "\"".concat(collectionName, "\" collectioni ").concat(newDocument.length, " ta document bilan yangilandi."), newDocument));
         } else {
           console.log('kalitlar taqdim etildi'); // check that every document in array has a _key property
 
@@ -569,7 +569,7 @@ function set(newDocument) {
           });
 
           if (docsWithoutKey) {
-            reject(_error["default"].call(_this, "Massivda .set() ga berilgan hujjatlarning har birida string _key property bo'lishi kerak."));
+            reject(_error["default"].call(_this, "Massivda .set() ga berilgan documentlarning har birida string _key property bo'lishi kerak."));
           } else {
             newDocument.forEach(function (doc) {
               var key = doc._key;
@@ -577,11 +577,11 @@ function set(newDocument) {
 
               _this.add(doc, key);
             });
-            resolve(_success["default"].call(_this, "\"".concat(collectionName, "\" to'plami ").concat(newDocument.length, " ta hujjat bilan (qayta yozish orqali) yangilandi."), newDocument));
+            resolve(_success["default"].call(_this, "\"".concat(collectionName, "\" collectioni ").concat(newDocument.length, " ta document bilan (qayta yozish orqali) yangilandi."), newDocument));
           }
         }
       })["catch"](function (err) {
-        reject(_error["default"].call(_this, "".concat(JSON.stringify(newDocument), " ma'lumotlari bilan ").concat(collectionName, " to'plami (qayta yozish) orqali yangilanmadi.")));
+        reject(_error["default"].call(_this, "".concat(JSON.stringify(newDocument), " ma'lumotlari bilan ").concat(collectionName, " collectioni (qayta yozish) orqali yangilanmadi.")));
       });
     }; // set document
 
@@ -600,20 +600,20 @@ function set(newDocument) {
           }
         }).then(function () {
           if (!docsToSet.length) {
-            reject(_error["default"].call(_this, " ".concat(JSON.stringify(docSelectionCriteria), " mezonlari bilan ").concat(collectionName, " to'plamida hujjatlar topilmadi.")));
+            reject(_error["default"].call(_this, " ".concat(JSON.stringify(docSelectionCriteria), " mezonlari bilan ").concat(collectionName, " collectionida documentlar topilmadi.")));
           }
 
           if (docsToSet.length > 1) {
-            _logger["default"].warn.call(_this, "Sozlash uchun ".concat(JSON.stringify(docSelectionCriteria), " bilan (").concat(docsToSet.length, ") ta hujjat topildi."));
+            _logger["default"].warn.call(_this, "Sozlash uchun ".concat(JSON.stringify(docSelectionCriteria), " bilan (").concat(docsToSet.length, ") ta document topildi."));
           }
         }).then(function () {
           docsToSet.forEach(function (docToSet, index) {
             _this.lf[collectionName].setItem(docToSet.key, docToSet.newDocument).then(function (value) {
               if (index === docsToSet.length - 1) {
-                resolve(_success["default"].call(_this, "".concat(docsToSet.length, " ta hujjat").concat(docsToSet.length > 1 ? 'lar' : '', " \"").concat(collectionName, "\" to'plami bilan ").concat(JSON.stringify(docSelectionCriteria), " (qayta yozish) orqali yangilandi."), newDocument));
+                resolve(_success["default"].call(_this, "".concat(docsToSet.length, " ta document").concat(docsToSet.length > 1 ? 'lar' : '', " \"").concat(collectionName, "\" collectioni bilan ").concat(JSON.stringify(docSelectionCriteria), " (qayta yozish) orqali yangilandi."), newDocument));
               }
             })["catch"](function (err) {
-              reject(_error["default"].call(_this, "".concat(docsToSet.length, " ta hujjat ").concat(collectionName, " to'plamiga (qayta yozish) orqali yangilandi.")));
+              reject(_error["default"].call(_this, "".concat(docsToSet.length, " ta document ").concat(collectionName, " collectioniga (qayta yozish) orqali yangilandi.")));
             });
           });
         });
@@ -622,9 +622,9 @@ function set(newDocument) {
 
       _this.setDocumentByKey = function () {
         _this.lf[collectionName].setItem(docSelectionCriteria, newDocument).then(function (value) {
-          resolve(_success["default"].call(_this, "".concat(JSON.stringify(docSelectionCriteria), " kaliti bilan \"").concat(collectionName, "\" to'plami ichidagi hujjat (qayta yozish) orqali yangilandi."), newDocument));
+          resolve(_success["default"].call(_this, "".concat(JSON.stringify(docSelectionCriteria), " kaliti bilan \"").concat(collectionName, "\" collectioni ichidagi document (qayta yozish) orqali yangilandi."), newDocument));
         })["catch"](function (err) {
-          reject(_error["default"].call(_this, "\"".concat(collectionName, "\" to'plami ichidagi hujjat ").concat(JSON.stringify(docSelectionCriteria), " kaliti bilan (qayta yozish) orqali yangilandi.")));
+          reject(_error["default"].call(_this, "\"".concat(collectionName, "\" collectioni ichidagi document ").concat(JSON.stringify(docSelectionCriteria), " kaliti bilan (qayta yozish) orqali yangilandi.")));
         });
       };
 
@@ -637,7 +637,7 @@ function set(newDocument) {
 
 
     if (!newDocument) {
-      _this.userErrors.push('Set() metodi uchun yangi hujjat objecti taqdim etilmagan. Objectdan foydalaning. Masalan: {id: 1, ism: "Otabek", yoshi: 17}.');
+      _this.userErrors.push('Set() metodi uchun yangi document objecti taqdim etilmagan. Objectdan foydalaning. Masalan: {id: 1, ism: "Otabek", yoshi: 17}.');
     } else if (currentSelectionLevel === 'doc') {
       if (!(_typeof(newDocument) == 'object' && newDocument instanceof Array == false)) {
         _this.userErrors.push('set() ga uzatilgan ma\'lumotlar object bo\'lishi kerak. Array, string, number yoki boolean emas.');
@@ -706,20 +706,20 @@ function update(docUpdates) {
         }
       }).then(function () {
         if (!docsToUpdate.length) {
-          reject(_error["default"].call(_this, "".concat(JSON.stringify(docSelectionCriteria), " mezonlari bilan  ").concat(collectionName, " to'plamida hujjatlar topilmadi.")));
+          reject(_error["default"].call(_this, "".concat(JSON.stringify(docSelectionCriteria), " mezonlari bilan  ").concat(collectionName, " collectionida documentlar topilmadi.")));
         }
 
         if (docsToUpdate.length > 1) {
-          _logger["default"].warn.call(_this, "Yangilash uchun ".concat(JSON.stringify(docSelectionCriteria), " bilan (").concat(docsToUpdate.length, ") ta hujjatlar topildi."));
+          _logger["default"].warn.call(_this, "Yangilash uchun ".concat(JSON.stringify(docSelectionCriteria), " bilan (").concat(docsToUpdate.length, ") ta documentlar topildi."));
         }
       }).then(function () {
         docsToUpdate.forEach(function (docToUpdate, index) {
           _this.lf[collectionName].setItem(docToUpdate.key, docToUpdate.newDocument).then(function (value) {
             if (index === docsToUpdate.length - 1) {
-              resolve(_success["default"].call(_this, "".concat(JSON.stringify(docSelectionCriteria), " dagi \"").concat(collectionName, "\" to'plamida ").concat(docsToUpdate.length, " hujjat").concat(docsToUpdate.length > 1 ? 'lar' : '', " yangilandi."), docUpdates));
+              resolve(_success["default"].call(_this, "".concat(JSON.stringify(docSelectionCriteria), " dagi \"").concat(collectionName, "\" collectionida ").concat(docsToUpdate.length, " document").concat(docsToUpdate.length > 1 ? 'lar' : '', " yangilandi."), docUpdates));
             }
           })["catch"](function (err) {
-            reject(_error["default"].call(_this, "".concat(collectionName, " to'plamidagi ").concat(docsToUpdate.length, " ta hujjat yangilanmadi.")));
+            reject(_error["default"].call(_this, "".concat(collectionName, " collectionidagi ").concat(docsToUpdate.length, " ta document yangilanmadi.")));
           });
         });
       });
@@ -734,9 +734,9 @@ function update(docUpdates) {
 
         _this.lf[collectionName].setItem(docSelectionCriteria, newDocument);
 
-        resolve(_success["default"].call(_this, "\"".concat(collectionName, "\" to'plamidagi hujjat ").concat(JSON.stringify(docSelectionCriteria), " kaliti bilan yangilandi."), newDocument));
+        resolve(_success["default"].call(_this, "\"".concat(collectionName, "\" collectionidagi document ").concat(JSON.stringify(docSelectionCriteria), " kaliti bilan yangilandi."), newDocument));
       })["catch"](function (err) {
-        reject(_error["default"].call(_this, "\"".concat(collectionName, "\" to'plamida ").concat(JSON.stringify(docSelectionCriteria), " kalitli hujjat topilmadi.")));
+        reject(_error["default"].call(_this, "\"".concat(collectionName, "\" collectionida ").concat(JSON.stringify(docSelectionCriteria), " kalitli document topilmadi.")));
       });
     }; // check for user errors
 
@@ -863,9 +863,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 function doc(docSelectionCriteria) {
   if (!docSelectionCriteria) {
-    this.userErrors.push('Doc() metodida belgilangan hujjat mezonlari yo\'q. Kalitli string yoki mezonlarga ega bo\'lgan objectdan foydalaning. Masalan: {id: 1}.');
+    this.userErrors.push('Doc() metodida belgilangan document mezonlari yo\'q. Kalitli string yoki mezonlarga ega bo\'lgan objectdan foydalaning. Masalan: {id: 1}.');
   } else if (typeof docSelectionCriteria !== 'string' && _typeof(docSelectionCriteria) !== 'object') {
-    this.userErrors.push('Doc() metodida ko\'rsatilgan hujjat mezonlari number yoki boolean bo\'lmasligi kerak. Kalitli string yoki mezonlarga ega bo\'lgan objectdan foydalaning. Masalan: {id: 1}.');
+    this.userErrors.push('Doc() metodida ko\'rsatilgan document mezonlari number yoki boolean bo\'lmasligi kerak. Kalitli string yoki mezonlarga ega bo\'lgan objectdan foydalaning. Masalan: {id: 1}.');
   } else {
     this.docSelectionCriteria = docSelectionCriteria;
   }

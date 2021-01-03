@@ -31,7 +31,7 @@ export default function add(data, keyProvided) {
         resolve(
           success.call(
             this,
-            `Hujjat "${ collectionName }" to'plamiga qo'shildi.`,
+            `Document "${ collectionName }" collectioniga qo'shildi.`,
             { key, data }
           )
         )
@@ -39,7 +39,7 @@ export default function add(data, keyProvided) {
         reject(
           error.call(
             this,
-            `Hujjatni ${ collectionName } to'plamiga qo'shib bo'lmadi.`
+            `Documentni ${ collectionName } collectioniga qo'shib bo'lmadi.`
           )
         )
       })
