@@ -760,6 +760,6 @@ Unda MahalliyBaza ma'lumotlar bazasiga yoki ma'lumotlar bazasidan turli xil kodl
 
 Siz ushbu kodlarini browserda ishga tushirishingiz va (agar xohlasangiz, ularni tahrirlashingiz mumkin) natijasini browser dev-tools oynasining applications bo'limining IndexedDB ma'lumotlar bazasi qismida va console bo'limida kuzatishingiz mumkin.
 
-![IndexedDB Store - Own Keys](images/mahalliybaza-playground.png)
+![IndexedDB Store - Own Keys](images/localbase-playground.png)
 
-[Playground and launch instructions](https://github.com/dannyconnell/mahalliybaza-playground)
+[Playground and launch instructions](https://github.com/dannyconnell/localbase-playground)
