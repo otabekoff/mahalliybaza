@@ -1,6 +1,6 @@
 {
   "name": "mahalliybaza",
-  "version": "0.7.5",
+  "version": "0.0.1",
   "description": "Firebasega uslubidagi, offalyn, mahalliy ma'lumotlar bazasi.",
   "main": "index.js",
   "scripts": {
