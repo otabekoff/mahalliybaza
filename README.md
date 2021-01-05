@@ -252,7 +252,7 @@ db.collection('foydalanuvchilar').doc({ id: 1 }).update({
 //  ]
 ```
 
-**Diqqat:** Agar siz bergan mezon bo'yicha bittadan ko'p documentlar topilsa, misol: `.doc({ jins: 'erkak' })` bo'yicha, unday holatda **barcha** mos tushgan (topilgan) documentlar yangilanadi. 
+**Diqqat:** Agar siz bergan mezon bo'yicha bittadan ko'p documentlar topilsa, misol: `.doc({ ism: 'Otabek' })` bo'yicha, unday holatda **barcha** mos tushgan (topilgan) documentlar yangilanadi. 
 
 ### Documentni o'rnatish (ustiga yozish)
 
@@ -388,7 +388,7 @@ db.collection('foydalanuvchilar').doc({ id: 1 }).delete()
 //  ]
 ```
 
-**Diqqat:** Agar siz bergan mezon bo'yicha bittadan ko'p documentlar topilsa, misol: `.doc({ jins: 'erkak' })` bo'yicha, unday holatda **barcha** mos tushgan (topilgan) documentlar o'chiriladi. 
+**Diqqat:** Agar siz bergan mezon bo'yicha bittadan ko'p documentlar topilsa, misol: `.doc({ ism: 'Otabek' })` bo'yicha, unday holatda **barcha** mos tushgan (topilgan) documentlar o'chiriladi. 
 
 ### Collectionni o'chirish
 Collectionni va undagi barcha documentlarni o'chirib tashlash.

@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Firebasega uslubidagi, offalyn, mahalliy ma'lumotlar bazasi.",
   "main": "index.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@OtabekSadiridinov"
+  },
   "scripts": {
     "bundle-dev": "browserify --standalone MahalliyBaza index.js -t babelify -t [ envify --NODE_ENV development ] > dist/mahalliybaza.dev.js",
     "bundle-prod": "browserify -p [ tinyify --no-flat ] --standalone MahalliyBaza index.js -t babelify -t [ envify --NODE_ENV production ] > dist/mahalliybaza.min.js",
