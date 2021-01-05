@@ -4,5 +4,5 @@ import reset from './reset'
 export default function error(message) {
   reset.call(this)
   logger.error.call(this, message)
-  return (`Error: ${ message }`)
+  return (`Xatolik: ${ message }`)
 }

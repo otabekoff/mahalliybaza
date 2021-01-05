@@ -27,12 +27,12 @@ export default function update(docUpdates) {
           reject(
             error.call(
               this,
-              `${ JSON.stringify(docSelectionCriteria) } mezonlari bilan  ${ collectionName } collectionida documentlar topilmadi.`
+              `${ JSON.stringify(docSelectionCriteria) } bilan ${ collectionName } collectionida documentlar topilmadi.`
             )
           )
         }
         if (docsToUpdate.length > 1) {
-          logger.warn.call(this, `Yangilash uchun ${ JSON.stringify(docSelectionCriteria) } bilan (${ docsToUpdate.length }) ta documentlar topildi.`)
+          logger.warn.call(this, `${ JSON.stringify(docSelectionCriteria) } bilan yangilash uchun (${ docsToUpdate.length }) ta document(lar) topildi.`)
         }
       }).then(() => {
         docsToUpdate.forEach((docToUpdate, index) => {

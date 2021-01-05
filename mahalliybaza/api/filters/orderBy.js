@@ -3,7 +3,7 @@ export default function orderBy(property, direction) {
     this.userErrors.push('OrderBy() metodida maydon nomi ko\'rsatilmagan. Stringdan foydalaning. Masalan: "ism".')
   }
   else if (typeof property !== 'string') {
-    this.userErrors.push('OrderBy () metodidagi birinchi parametr String (maydon nomi) bo\'lishi kerak. Masalan: "ism".')
+    this.userErrors.push('OrderBy() metodidagi birinchi parametr String (maydon nomi) bo\'lishi kerak. Masalan: "ism".')
   }
   else {
     this.orderByProperty = property

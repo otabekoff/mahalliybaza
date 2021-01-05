@@ -9,7 +9,7 @@
     "bundle": "npm run bundle-dev && npm run bundle-prod",
     "deploy": "npm run bundle && npm publish"
   },
-  "author": "Danny Connell",
+  "author": "Otabek Sadiridinov",
   "license": "MIT",
   "dependencies": {
     "browserify": "^17.0.0",

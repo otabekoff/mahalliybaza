@@ -9,7 +9,7 @@ export default function add(data, keyProvided) {
     this.userErrors.push('add() metodida ma\'lumot yo\'q. Siz objectdan foydalanishingiz kerak, misol: { id: 1, ism: "Otabek", yosh: 19 }')
   }
   else if (!(typeof data == 'object' && data instanceof Array == false)) {
-    this.userErrors.push('add() funksiyasiga uzatilgan ma\'lumot object bo\'lishi kerak. Array, string, number yoki boolean emas.')
+    this.userErrors.push('add() metodiga uzatilgan ma\'lumot object bo\'lishi kerak. Array, string, number yoki boolean emas.')
   }
 
   // no user errors, do the add
@@ -31,7 +31,7 @@ export default function add(data, keyProvided) {
         resolve(
           success.call(
             this,
-            `Document "${ collectionName }" collectioniga qo'shildi.`,
+            `"${ collectionName }" nomli collectionga yangi document qo'shildi.`,
             { key, data }
           )
         )
@@ -39,7 +39,7 @@ export default function add(data, keyProvided) {
         reject(
           error.call(
             this,
-            `Documentni ${ collectionName } collectioniga qo'shib bo'lmadi.`
+            `"${ collectionName }" nomli collectionga yangi document qo'shilmadi.`
           )
         )
       })

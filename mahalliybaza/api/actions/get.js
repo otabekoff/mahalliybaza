@@ -28,7 +28,7 @@ export default function get(options = {
       }
       collection.push(collectionItem)
     }).then(() => {
-      let logMessage = `"${ collectionName }" collectioni olindi`
+      let logMessage = `"${ collectionName }" nomli collection olindi`
       // orderBy
       if (orderByProperty) {
         logMessage += `, "${ orderByProperty }" orqali tartiblandi`
@@ -48,7 +48,7 @@ export default function get(options = {
       }
       // limit
       if (limitBy) {
-        logMessage += `, ${ limitBy } tagacha checklandi`
+        logMessage += `, ${ limitBy } ta document(lar)gacha checklandi`
         collection = collection.splice(0, limitBy)
       }
       logMessage += `:`
@@ -74,7 +74,7 @@ export default function get(options = {
         }
       }).then(() => {
         if (!collection.length) {
-          logger.error.call(this, `${ JSON.stringify(docSelectionCriteria)} mezonlari bilan "${ collectionName }" collectionidagi documentlar topilmadi.`)
+          logger.error.call(this, `${ JSON.stringify(docSelectionCriteria)} bilan "${ collectionName }" nomli collectionida documentlar topilmadi.`)
         } else {
           document = collection[0]
           logger.log.call(this, `${ JSON.stringify(docSelectionCriteria) } bilan document olindi:`, document)
@@ -91,12 +91,12 @@ export default function get(options = {
         if (document) {
           logger.log.call(this, `${ JSON.stringify(docSelectionCriteria) } bilan document olindi:`, document)
         } else {
-          logger.error.call(this, `${ JSON.stringify(docSelectionCriteria)} kaliti bilan "${ collectionName }" collectionida document topilmadi.`)
+          logger.error.call(this, `${ JSON.stringify(docSelectionCriteria)} kaliti bilan "${ collectionName }" nomli collectionda document topilmadi.`)
         }
         reset.call(this)
         return document
       }).catch(err => {
-        logger.error.call(this, `${ JSON.stringify(docSelectionCriteria)} kaliti bilan "${ collectionName }" collectionida document topilmadi.`)
+        logger.error.call(this, `${ JSON.stringify(docSelectionCriteria)} kaliti bilan "${ collectionName }" nomli collectionda document topilmadi.`)
         reset.call(this)
       });
     }
@@ -110,13 +110,13 @@ export default function get(options = {
 
   // check for user errors
   if (!(typeof options == 'object' && options instanceof Array == false)) {
-    this.userErrors.push('get() ga uzatilgan ma\'lumotlar object bo\'lishi kerak. Array, string, number yoki boolean emas. Objectda keys (kalitlar) xususiyati true yoki falsega o\'rnatilgan bo\'lishi kerak. Masalan: {keys: true}.')
+    this.userErrors.push('get() metodiga uzatilgan ma\'lumotlar object bo\'lishi kerak. Array, string, number yoki boolean emas. Objectda true yoki false qiymatli boolean bo\'lishi kerak. Masalan: {keys: true}.')
   } else {
     if (!options.hasOwnProperty('keys')) {
-      this.userErrors.push('get() metodiga uzatilgan object true yoki false qiymatli keys (kalitlar) booleani bo\'lishi kerak. Masalan: { keys: true }')
+      this.userErrors.push('get() metodiga uzatilgan object true yoki false qiymatli keys boolean bo\'lishi kerak. Masalan: { keys: true }')
     } else {
       if (typeof options.keys !== 'boolean') {
-        this.userErrors.push('get() metodiga uzatilgan keys (kalitlar) booleaniga true yoki false qiymat berilishi kerak. String yoki number emas.')
+        this.userErrors.push('get() metodiga uzatilgan keys booleaniga true yoki false qiymat berilishi kerak. String yoki number emas.')
       }
     }
   }

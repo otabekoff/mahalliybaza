@@ -6,7 +6,7 @@ MahalliyBaza sizga Firebase uslubidagi sodda, kuchli, foydalanuvchi brauzerida s
 
 Siz xohlagancha ma'lumot bazalarini yaratishingiz mumkin.
 
-Ma'lumot bazalari Collectionlar(to'plam) va Documentlar(xujjatlar)ga birlashtirilgan (xuddi Firebase Cloud Firestore kabi).
+Ma'lumot bazalari Collectionlar(to'plam) va Documentlar(hujjatlar)ga birlashtirilgan (xuddi Firebase Cloud Firestore kabi).
 
 - **Ma'lumotlar bazalarida collectionlar** mavjud (misol: `foydalanuvchilar`)
 - **Collectionlarda documentlar** mavjud (misol: `{ id: 1, ism: 'Otabek', yosh: 19 }`
@@ -17,7 +17,7 @@ MahalliyBaza [LocalForage](https://github.com/localForage/localForage) yordamida
 ## Boshlashdan avval bilib qo'yishingiz yaxshi bo'lgan atamalar.
 
 > Atamalar... Quyida ishlatilish mumkin bo'lgan ma'nolarda keltirildi.
-- **Funksiya** -
+- **Metod** -
 - **Order** -
 - **OrderBy** -
 - **Ascending** -
@@ -31,7 +31,7 @@ MahalliyBaza [LocalForage](https://github.com/localForage/localForage) yordamida
 - **Add** - qo'shish.
 **Get** - olish.
 - **Update** - yangilash.
-- **Set** - o'rnatish. Bu yerda qayta yozish orqali yangilash ma'nosida.
+- **Set** - Bu yerda qayta yozish orqali yangilash, o'rnatish ma'nosida.
 - **Delete** - o'chirish.
 - **Overwrite** - ustiga yozish / qayta yozish.
 - **Promise(s)** -
@@ -54,8 +54,8 @@ MahalliyBaza [LocalForage](https://github.com/localForage/localForage) yordamida
 - [Ma'lumot Qo'shish](#malumot-qoshish)
   - [Collectionga document qo'shish](#toplamga-document-qoshish)
   - [Documentni yangilash](#documentni-yangilash)
-  - [Documentni yangilash (ustiga yozish)](#documentni-yangilash-ustiga-yozish)
-  - [Collectionni yangilash (ustiga yozish)](#toplamni-yangilash-ustiga-yozish)
+  - [Documentni o'rnatish (ustiga yozish)](#documentni-ornatish-ustiga-yozish)
+  - [Collectionni o'rnatish (ustiga yozish)](#toplamni-ornatish-ustiga-yozish)
 - [Ma'lumotni olish](#malumotni-olish)
   - [Collectionni olish](#toplamni-olish)
   - [Collectionni tartiblash](#toplamni-tartiblash)
@@ -67,20 +67,20 @@ MahalliyBaza [LocalForage](https://github.com/localForage/localForage) yordamida
   - [Ma'lumotlar bazasini o'chirish](#malumotlar-bazasini-ochirish)
 - [Kalitlardan yuqori darajada foydalanish](#kalitlardan-yuqori-darajada-foydalanish)
   - [Document qo'shish va o'z kalitingizni kiritish](#document-qoshish-va-oz-kalitingizni-kiritish)
-  - [Kalitlarni o'z ichiga olgan collectionni yangilash (ustiga yozish)](#kalitlarni-oz-ichiga-olgan-toplamni-yangilash-ustiga-yozish)
-  - [Documentni kalit bilan olish, yangilash, yangilash (qayta yozish) yoki o'chirish (document mezonlari o'rniga)](#documentni-kalit-bilan-olish-yangilash-yangilash-qayta-yozish-yoki-ochirish-document-mezonlari-orniga))
+  - [Kalitlarni o'z ichiga olgan collectionni o'rnatish (ustiga yozish)](#kalitlarni-oz-ichiga-olgan-toplamni-ornatish-ustiga-yozish)
+  - [Documentni kalit bilan olish, yangilash, o'rnatish (qayta yozish) yoki o'chirish (document mezonlari o'rniga)](#documentni-kalit-bilan-olish-yangilash-ornatish-qayta-yozish-yoki-ochirish-document-mezonlari-orniga))
   - [Collectionni olish va kalitlarni ma'lumotlar bilan birga qaytarish.](#toplamni-olish-va-kalitlarni-malumotlar-bilan-birga-qaytarish)
 - [Promiselar bilan ishlash](#promiselar-bilan-ishlash)
   - [Documentni qo'shib, keyin biron ish bajarish](#documentni-qoshib-keyin-biror-narsa-qilish)
   - [Documentni yangilab, keyin biron bir ishni bajarish](#documentni-yangilab-keyin-biron-bir-ishni-bajarish)
-  - [Documentni yangilab (ustiga yozib), keyin biron ish bajarish](#documentni-yangilab-ustiga-yozib-keyin-biror-narsa-qilish)
+  - [Documentni o'rnatib (ustiga yozib), keyin biron ish bajarish](#documentni-ornatib-ustiga-yozib-keyin-biror-narsa-qilish)
   - [Documentni o'chirib tashlab, keyin biron ish bajarish](#documentni-ochirib-tashlab-keyin-biror-narsa-qilish)
   - [Collectionni o'chirib tashlab, keyin biron ish bajarish](#toplamni-ochirib-tashlab-keyin-biror-narsa-qilish)
   - [Ma'lumotlar bazasini o'chirib tashlab, keyin biron ish bajarish](#malumotlar-bazasini-ochirib-tashlab-keyin-biror-narsa-qilish)
 - [Async / Await](#async--await)
   - [Document qo'shish (Async Await bilan)](#document-qoshish-async-await-bilan)
   - [Documentlarni yangilash (Async Await bilan)](#documentlarni-yangilash-async-await-bilan)
-  - [Documentlarni yangilash (ustiga yozish, Async Await bilan)](#documentlarni-yangilash-ustiga-yozish-async-await-bilan))
+  - [Documentlarni o'rnatish (ustiga yozish, Async Await bilan)](#documentlarni-ornatish-ustiga-yozish-async-await-bilan))
   - [Collectionni olish va xatolarni ushlash (Async Await bilan)](#toplamni-olish-va-xatolarni-ushlash-async-await-bilan))
 - [Sozlash](#sozlash)
   - [Consoledagi Loglarni o'chirish](#consoledagi-loglarni-ochirish)
@@ -190,11 +190,12 @@ export default {
 
 ## Video Darslik
 
-<a href="https://www.youtube.com/watch?v=KJnupY2HPCg" target="_blank">Mening MahalliyBazani ishlatish haqidagi videoimni ko'ring</a>, 0 dan boshlab to'lliq tushuntirilgan:
+Tez kunda... Videodarslik tayyorlanmoqda.
+<!-- <a href="https://www.youtube.com/watch?" target="_blank">Mening MahalliyBazani ishlatish haqidagi videoimni ko'ring</a>, 0 dan boshlab to'lliq tushuntirilgan: -->
 
-<a href="https://www.youtube.com/watch?v=KJnupY2HPCg" target="_blank">
-  <img src="images/indexeddb-finally-an-easy-way-with-localbase-link.png">
-</a>
+<!-- <a href="https://www.youtube.com/watch?v=" target="_blank">
+  <img src="images/va-nihoyat-mahalliybaza.png">
+</a> -->
 
 ## Qisqa Kirish
 
@@ -253,10 +254,10 @@ db.collection('foydalanuvchilar').doc({ id: 1 }).update({
 
 **Diqqat:** Agar siz bergan mezon bo'yicha bittadan ko'p documentlar topilsa, misol: `.doc({ jins: 'erkak' })` bo'yicha, unday holatda **barcha** mos tushgan (topilgan) documentlar yangilanadi. 
 
-### Documentni yangilash (ustiga yozish)
+### Documentni o'rnatish (ustiga yozish)
 
-Mavjud documentni qayta yozish orqali yangilash.
-Bunda yangilanayotgan document metodida, yangilanishi kerak bo'lgan document maydonlari bo'lmagan taqdirda, yangi maydonlar kiritilib eski maydonlar o'chiriladi. Yani update metodiga o'xshamagan holda, documentni to'liq qayta yoziladi. Shuning uchun barcha kerakli maydonlar `set` metodi ichida berilishi kerak.
+Mavjud documentni set() metodi orqali yangilash.
+Bunda set() metodi ichida barcha yangilanishi kerak bo'lgan document maydonlari taqdim etilishi kerak. Chunki set() metodi databazadagi collection ichidagi documentga kiritilayotgan yangi maydonlarning o'zini saqlab, eski saqlangan maydonlarni o'chirib yuboradi. Va update() metodi kabi berilgan maydonlarning o'zinigina yangilab, yangisini kiritib, qolganlarini o'z holatida qoldirmaydi. Yani update metodiga o'xshamagan holda, documentni to'liq qayta yozadi. Shuning uchun barcha kerakli maydonlarni `set` metodi ichida berish kerak.
 
 ```javascript
 db.collection('foydalanuvchilar').doc({ id: 2 }).set({
@@ -271,12 +272,12 @@ db.collection('foydalanuvchilar').doc({ id: 2 }).set({
 //  ]
 ```
 
-**Diqqat:** Agar siz bergan mezon bo'yicha bittadan ko'p documentlar topilsa, misol: `.doc({ jins: 'erkak' })` bo'yicha, unday holatda **barcha** mos tushgan (topilgan) documentlar yangilanadi. 
+**Diqqat:** Agar siz bergan mezon bo'yicha bittadan ko'p documentlar topilsa, misol: `.doc({ ism: 'Otabek' })` bo'yicha, unday holatda **barcha** mos tushgan (topilgan) documentlar o'rnatiladi (qayta yoziladi). 
 
-### Collectionni yangilash (ustiga yozish)
+### Collectionni o'rnatish (ustiga yozish)
 
 <!-- Overwrite an entire collection with an array of documents. This will completely overwrite the selected collection. -->
-Documentlarning to'plami bo'lgan butun `collection udpate` bo'ladi yani qayta yozish orqali yangilanadi.
+Documentlarning to'plami bo'lgan butun collection `o'rnatish` metodi bilan qayta yozish orqali yangilanadi.
 
 
 ```javascript
@@ -411,7 +412,7 @@ Odatda, MahalliyBaza bu keylar uchun tasodifiy, tartiblangan, yagona IDlarni yar
 
 Ammo siz ushbu keylarning (kalitlarning) nomini boshqarishni(o'zgartirishni) xohlashingiz mumkin. Masalan siz:
 - Document qo'shganda o'z keyingizni ko'rsatishingiz.
-- Uni documentlarni tanlash (olayotganda, yangilayotganda, qayta yozayotganda yoki o'chirayotganda) ishlatishingiz
+- Uni documentlarni tanlash (olayotganda, yangilayotganda, o'rnatayotganda yoki o'chirayotganda) ishlatishingiz
 - Va collectionni olayotganingizda barcha keylarni document maydonlari sifatida qaytarishingiz mumkin. Masalan quyidagidek.
 ```javascript
 [
@@ -460,10 +461,10 @@ IndexedDB da quyidagicha ko'rinadi:
 
 ![IndexedDB Store - Own Keys](images/indexed-db-own-keys.png)
 
-### Kalitlarni o'z ichiga olgan collectionni yangilash (ustiga yozish)
+### Kalitlarni o'z ichiga olgan collectionni o'natish (ustiga yozish)
 
 
-To'liq collectionni documentlar arrayi bilan (qayta yozish orqali) yangilang va har bir document uchun keyni kiriting. `{keys: true}" parametri kiritganingizga ishonch hosil qiling. Bu tanlangan collectionni to'liq qayta yozadi.
+To'liq collectionni documentlar arrayi bilan (qayta yozish orqali) o'rnating va har bir document uchun keyni kiriting. `{keys: true}" parametri kiritganingizga ishonch hosil qiling. Bu tanlangan collectionni to'liq qayta yozadi.
 
 ```javascript
 db.collection('foydalanuvchilar')
@@ -483,7 +484,7 @@ db.collection('foydalanuvchilar')
   ], { keys: true })
 ```
 
-### Documentni kalit bilan olish, yangilash, yangilash (qayta yozish) yoki o'chirish (document mezonlari o'rniga)
+### Documentni kalit bilan olish, yangilash, o'rnatish (qayta yozish) yoki o'chirish (document mezonlari o'rniga)
 
 Documentni `doc`" metodi bilan tanlayotganda, maydon nomi va qiymati ko'rsatilgan obyekt kiritish o'rniga, shunchaki key bilan string (yoki number) kiriting:
 ```javascript
@@ -497,7 +498,7 @@ db.collection('foydalanuvchilar').doc('kalit-1').update({
   ism: 'Abdurahmon'
 })
 
-// documentni key bilan qayta yozish
+// documentni key bilan o'rnatish
 db.collection('foydalanuvchilar').doc('kalit-2').set({
   id: 4, 
   ism: 'Adxamboy',
@@ -580,7 +581,7 @@ db.collection('foydalanuvchilar')
 // yozmaslik orqali tekshirib ko'rishingiz mumkin.
 ```
 
-### Documentni yangilab (ustiga yozib), keyin biron ish bajarish
+### Documentni o'rnatib (ustiga yozib), keyin biron ish bajarish
 
 ```javascript
 db.collection('foydalanuvchilar')
@@ -591,7 +592,7 @@ db.collection('foydalanuvchilar')
     yosh: 27
   })
   .then(response => {
-    console.log('Qayta yozish muvaffaqiyatli amalga oshdi.')
+    console.log("O\'rnatish muvaffaqiyatli amalga oshdi.")
   })
   .catch(error => {
     console.log("Xatolik yuz berdi, qaytadan harakat qilib ko'ring.")
@@ -688,10 +689,10 @@ async function yangilash() {
 yangilash()
 ```
 
-### Documentlarni yangilash (ustiga yozish, Async Await bilan)
+### Documentlarni o'rnatish (ustiga yozish, Async Await bilan)
 
 ```javascript
-async function qaytaYangilash() {
+async function ornatish() {
   let natija = await db.collection('foydalanuvchilar')
     .doc({ id: 2 })
     .set({
@@ -701,7 +702,7 @@ async function qaytaYangilash() {
     })
     console.log(natija)
 }
-qaytaYangilash()
+ornatish()
 ```
 
 ### Collectionni olish va xatolarni ushlash (Async Await bilan)
@@ -730,11 +731,9 @@ foydalanuvchilarniOlish()
 
 Odatda, MahalliyBaza ishlab chiqish (development) variantida quyidagi kabi ajoyib loglarni browserning dev-tools console bo'limida chiqarib boradi:
 
-![Gorgeous, Labelled Logs](images/gorgeous-logs.png)
+![Consoleda chiqadigan loglar](images/console-loglar.png)
 
 Siz bu loglarni `db.config.debug` boolean maydonigaa `false` qiymatini berish orqali o'zgartirishingiz mumkin.
-
-<!-- It's best to do this after you initialize the database, and before you do anything else: -->
 
 Ma'lumotlar bazasini ishga tushirgandan so'ng va boshqa biror narsa bajarishdan oldin quyidagi kodni kiritish kerak:
 
@@ -752,14 +751,19 @@ db.config.debug = false
 
 ## Playground
 
-[Playground](https://github.com/dannyconnell/mahalliybaza-playground) bu MahalliyBaza va yuqoridagi barcha mavjud metodlar bilan ishlab ko'rish uchun mo'ljallangan dastur.
+Tez kunda... Playground tayyorlanish jarayonida.
 
-<!-- It contains a bunch of different code snippets (for adding, updating, setting and getting) data to/from a MahalliyBaza database. -->
+<!-- [Playground](https://github.com/OtabekSadiridinov/mahalliybaza-playground) bu MahalliyBaza va yuqoridagi barcha mavjud metodlar bilan ishlab ko'rish uchun mo'ljallangan dastur. -->
 
-Unda MahalliyBaza ma'lumotlar bazasiga yoki ma'lumotlar bazasidan turli xil kodlarni (qo'shish, yangilash, sozlash va olish uchun) ma'lumotlar to'plami mavjud.
+<!-- Unda MahalliyBaza ma'lumotlar bazasiga yoki ma'lumotlar bazasidan turli xil kodlarni (qo'shish, yangilash, o'rnatish va olish uchun) ma'lumotlar to'plami mavjud.
 
 Siz ushbu kodlarini browserda ishga tushirishingiz va (agar xohlasangiz, ularni tahrirlashingiz mumkin) natijasini browser dev-tools oynasining applications bo'limining IndexedDB ma'lumotlar bazasi qismida va console bo'limida kuzatishingiz mumkin.
 
-![IndexedDB Store - Own Keys](images/localbase-playground.png)
+![IndexedDB Store - Own Keys](images/playground.png)
 
-[Playground and launch instructions](https://github.com/dannyconnell/localbase-playground)
+[Playground and launch instructions](https://github.com/OtabekSadiridinov/mahalliybaza-playground) -->
+
+
+## Savol yoki takliflar
+Ushbu `MahalliyBaza` nomli kutubxona borasida savollar, fikrlar, e'tirozlar, Ushbu reponing `issues` bo'limida qoldiring. Shuningdex, xatoliklar bo'lsa, o'zbekcha tarjimalarni yashilash bo'yicha fikrlar bo'lsa ham yuqoridagi `issues` bo'limida qoldiring.
+**Albatta javob beramiz. E'tiboringiz uchun kattakon rahmat.**

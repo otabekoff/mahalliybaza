@@ -63,7 +63,7 @@ export default function deleteIt() {
             reject(
               error.call(
                 this,
-                `"${ collectionToDelete }" nomli collectionni o'chirib bo'lmadi.`
+                `"${ collectionToDelete }" nomli collection o'chirilmadi.`
               )
             )
           })
@@ -94,12 +94,12 @@ export default function deleteIt() {
             reject(
               error.call(
                 this,
-                `${ JSON.stringify(docSelectionCriteria) } mezonlari bilan "${ collectionName }" nomli collectionda documentlar topilmadi. Hech qanday document o'chirilmadi.`
+                `${ JSON.stringify(docSelectionCriteria) } => "${ collectionName }" nomli collectionda document(lar) topilmadi. Hech qanday document o'chirilmadi.`
               )
             )
           }
           if (keysForDeletion.length > 1) {
-            logger.warn.call(this, `${ JSON.stringify(docSelectionCriteria) } bilan (${ keysForDeletion.length }) ta  documentlar topildi.`)
+            logger.warn.call(this, `${ JSON.stringify(docSelectionCriteria) } bilan (${ keysForDeletion.length }) ta document${ keysForDeletion.length > 1 ? 'lar' : '' } topildi.`)
           }
         }).then(() => {
           keysForDeletion.forEach((key, index) => {
@@ -108,7 +108,7 @@ export default function deleteIt() {
                 resolve(
                   success.call(
                     this,
-                    `${ keysForDeletion.length } document${ keysForDeletion.length > 1 ? 'lar' : '' } ${ JSON.stringify(docSelectionCriteria) } bilan o'chirildi.`,
+                    `${ JSON.stringify(docSelectionCriteria) } bilan ${ keysForDeletion.length }ta document${ keysForDeletion.length > 1 ? 'lar' : '' } o'chirildi.`,
                     { keys: keysForDeletion }
                   )
                 )
@@ -117,7 +117,7 @@ export default function deleteIt() {
               reject(
                 error.call(
                   this,
-                  `${ keysForDeletion.length } ta documentni ${ collectionName } nomli collectiondan o'chirib bo'lmadi.`
+                  `${ keysForDeletion.length } ta document${ keysForDeletion.length > 1 ? 'lar' : '' }ni ${ collectionName } nomli collectiondan o'chirilmadi.`
                 )
               )
             })
@@ -133,7 +133,7 @@ export default function deleteIt() {
               resolve(
                 success.call(
                   this,
-                  `${ JSON.stringify(docSelectionCriteria) } kalitli documentlar o'chirildi.`,
+                  `${ JSON.stringify(docSelectionCriteria) } kalitli document(lar) o'chirildi.`,
                   { key: docSelectionCriteria }
                 )
               )
@@ -141,7 +141,7 @@ export default function deleteIt() {
               reject(
                 error.call(
                   this,
-                  `"${ collectionName }" collectionida ${ JSON.stringify(docSelectionCriteria) } kaliti bilan document topilmadi. Hech qanday document o'chirilmadi.`
+                  `"${ collectionName }" nomli collectionda ${ JSON.stringify(docSelectionCriteria) } kaliti bilan document(lar) topilmadi. Hech qanday document o'chirilmadi.`
                 )
               )
             });
@@ -150,7 +150,7 @@ export default function deleteIt() {
             reject(
               error.call(
                 this,
-                `"${ collectionName }" collectionida ${ JSON.stringify(docSelectionCriteria) } kaliti bilan document topilmadi. Hech qanday document o'chirilmadi.`
+                `"${ collectionName }" nomli collectionda ${ JSON.stringify(docSelectionCriteria) } kaliti bilan document(lar) topilmadi. Hech qanday document o'chirilmadi.`
               )
             )
           }

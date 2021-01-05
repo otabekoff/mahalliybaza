@@ -25,12 +25,12 @@ export default function set(newDocument, options = {
           resolve(
             success.call(
               this,
-              `"${ collectionName }" collectioni ${ newDocument.length } ta document bilan yangilandi.`,
+              `"${ collectionName }" nomli collectionda ${ newDocument.length } ta document o'rnatildi.`,
               newDocument
             )
           )
         } else {
-          console.log('kalitlar taqdim etildi')
+          console.log('Kalitlar taqdim etildi')
           // check that every document in array has a _key property
           let docsWithoutKey = 0
           newDocument.forEach(doc => {
@@ -42,7 +42,7 @@ export default function set(newDocument, options = {
             reject(
               error.call(
                 this,
-                `Massivda .set() ga berilgan documentlarning har birida string _key property bo'lishi kerak.`
+                `.set() metodiga array ichida berilgan documentlarning har birida string bo'lgan _key property bo'lishi kerak.`
               )
             )
           } else {
@@ -54,7 +54,7 @@ export default function set(newDocument, options = {
             resolve(
               success.call(
                 this,
-                `"${ collectionName }" collectioni ${ newDocument.length } ta document bilan (qayta yozish orqali) yangilandi.`,
+                `"${ collectionName }" nomli collectionda ${ newDocument.length } ta document bilan (qayta yozish orqali) o'rnatildi.`,
                 newDocument
               )
             )
@@ -64,7 +64,7 @@ export default function set(newDocument, options = {
         reject(
           error.call(
             this,
-            `${ JSON.stringify(newDocument) } ma'lumotlari bilan ${ collectionName } collectioni (qayta yozish) orqali yangilanmadi.`
+            `${ JSON.stringify(newDocument) } ma'lumotlari bilan ${ collectionName } collectioni (qayta yozish) orqali o'rnatilmadi.`
           )
         )
       });
@@ -88,12 +88,12 @@ export default function set(newDocument, options = {
             reject(
               error.call(
                 this,
-                ` ${ JSON.stringify(docSelectionCriteria) } mezonlari bilan ${ collectionName } collectionida documentlar topilmadi.`
+                `${ collectionName } collectionida ${ JSON.stringify(docSelectionCriteria) } bilan documentlar topilmadi.`
               )
             )
           }
           if (docsToSet.length > 1) {
-            logger.warn.call(this, `Sozlash uchun ${ JSON.stringify(docSelectionCriteria) } bilan (${ docsToSet.length }) ta document topildi.`)
+            logger.warn.call(this, `O'rnatish uchun ${ JSON.stringify(docSelectionCriteria) } bilan (${ docsToSet.length }) ta document topildi.`)
           }
         }).then(() => {
           docsToSet.forEach((docToSet, index) => {
@@ -103,7 +103,7 @@ export default function set(newDocument, options = {
                 resolve(
                   success.call(
                     this,
-                    `${ docsToSet.length } ta document${ docsToSet.length > 1 ? 'lar' : '' } "${ collectionName }" collectioni bilan ${ JSON.stringify(docSelectionCriteria) } (qayta yozish) orqali yangilandi.`,
+                    `${ JSON.stringify(docSelectionCriteria) } bilan "${ collectionName }" collectionida ${ docsToSet.length } ta document${ docsToSet.length > 1 ? 'lar' : '' } (qayta yozish) orqali o'rnatildi.`,
                     newDocument
                   )
                 )
@@ -112,7 +112,7 @@ export default function set(newDocument, options = {
               reject(
                 error.call(
                   this,
-                  `${ docsToSet.length } ta document ${ collectionName } collectioniga (qayta yozish) orqali yangilandi.`
+                  `${ docsToSet.length } ta document ${ collectionName } collectioniga (qayta yozish) orqali o'rnatildi.`
                 )
               )
             })
@@ -126,7 +126,7 @@ export default function set(newDocument, options = {
           resolve(
             success.call(
               this,
-              `${ JSON.stringify(docSelectionCriteria) } kaliti bilan "${ collectionName }" collectioni ichidagi document (qayta yozish) orqali yangilandi.`,
+              `${ JSON.stringify(docSelectionCriteria) } kaliti bilan "${ collectionName }" collectioni ichidagi document (qayta yozish) orqali o'rnatildi.`,
               newDocument
             )
           )
@@ -134,7 +134,7 @@ export default function set(newDocument, options = {
           reject(
             error.call(
               this,
-              `"${ collectionName }" collectioni ichidagi document ${ JSON.stringify(docSelectionCriteria) } kaliti bilan (qayta yozish) orqali yangilandi.`
+              `"${ collectionName }" collectioni ichidagi document ${ JSON.stringify(docSelectionCriteria) } kaliti bilan (qayta yozish) orqali o'rnatildi.`
             )
           )
         })
@@ -149,10 +149,10 @@ export default function set(newDocument, options = {
 
     // check for user errors
     if (!newDocument) {
-      this.userErrors.push('Set() metodi uchun yangi document objecti taqdim etilmagan. Objectdan foydalaning. Masalan: {id: 1, ism: "Otabek", yoshi: 17}.')
+      this.userErrors.push('set() metodi uchun yangi document objecti taqdim etilmagan. Objectdan foydalaning. Masalan: {id: 1, ism: "Otabek", yoshi: 19}.')
     } else if (currentSelectionLevel === 'doc') {
       if (!(typeof newDocument == 'object' && newDocument instanceof Array == false)) {
-        this.userErrors.push('set() ga uzatilgan ma\'lumotlar object bo\'lishi kerak. Array, string, number yoki boolean emas.')
+        this.userErrors.push('set() metodiga uzatilgan ma\'lumotlar object bo\'lishi kerak. Array, string, number yoki boolean emas.')
       }
     } else if (currentSelectionLevel === 'collection') {
       if (!(typeof newDocument == 'object' && newDocument instanceof Array == true)) {
